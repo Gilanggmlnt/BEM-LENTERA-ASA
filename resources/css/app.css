@@ -1,0 +1,5 @@
+/*
+    File ini sengaja dikosongkan untuk mencegah konflik
+    antara build Tailwind CSS lokal (Vite) dan Tailwind CDN.
+    Styling sekarang sepenuhnya diatur oleh CDN di layouts/app.blade.php.
+*/
