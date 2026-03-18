@@ -137,7 +137,7 @@ nav.is-sticky {
     {{-- STRUKTUR KABINET --}}
     <section class="py-24 overflow-x-auto bg-slate-50" id="struktur-kabinet">
         <div class="max-w-7xl mx-auto">
-            <div id="struktur-kabinet-title" class="flex items-center gap-3 mb-12">
+            <div id="struktur-kabinet-title" class="flex items-center gap-3 p-4 mb-12">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
                     Struktur Kabinet
                 </h2>
@@ -161,13 +161,27 @@ nav.is-sticky {
             </style>
 
             <div class="flex flex-col items-center relative z-box">
-            <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px]">
+            @php $presma = $leaders['presiden-mahasiswa'] ?? null; @endphp
+            <div 
+                class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] cursor-pointer hover:bg-yellow-50 transition-colors"
+                data-name="{{ $presma->nama_fungsionaris ?? 'Kevin Kurnia Priambodo' }}"
+                data-role="Presiden Mahasiswa"
+                data-photo="{{ asset('images/' . ($presma->photo_path ?? 'Foto_Presma_Kevin.png')) }}"
+                data-desc="Memimpin dan mengarahkan jalannya roda organisasi BEM KBM Polines serta menjadi representasi utama mahasiswa di tingkat internal maupun eksternal."
+            >
                 Presiden Mahasiswa
             </div>
             
             <div class="h-12 w-[2px] bg-black relative z-line"></div>
             
-            <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px]">
+            @php $wapresma = $leaders['wakil-presiden-mahasiswa'] ?? null; @endphp
+            <div 
+                class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] cursor-pointer hover:bg-yellow-50 transition-colors"
+                data-name="{{ $wapresma->nama_fungsionaris ?? 'Anggara Yudha Pratama' }}"
+                data-role="Wakil Presiden Mahasiswa"
+                data-photo="{{ asset('images/' . ($wapresma->photo_path ?? 'Foto_Wapresma_Anggara.png')) }}"
+                data-desc="Mendampingi Presiden Mahasiswa dalam mengawasi kinerja kabinet serta memastikan koordinasi antar elemen organisasi berjalan dengan harmonis."
+            >
                 Wakil Presiden Mahasiswa
             </div>
             </div>
@@ -184,7 +198,15 @@ nav.is-sticky {
 
                 <div class="absolute top-10 left-[168px] w-[220px] flex flex-col items-center">
                     
-                    <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] z-box">
+                    @php $sekab = $leaders['sekretaris-kabinet'] ?? null; @endphp
+                    <div 
+                        class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] z-box cursor-pointer hover:bg-yellow-50 transition-colors"
+                        data-name="{{ $sekab->nama_fungsionaris ?? 'Fazila Banyulangit P.' }}"
+                        data-role="Sekretaris Kabinet"
+                        data-photo="{{ asset('images/' . ($sekab->photo_path ?? 'Foto_SekretarisKabinet_Fazila.png')) }}"
+                        data-desc="Bertanggung jawab atas tata kelola administrasi pusat dan sinkronisasi agenda strategis antar kementerian di bawah naungannya."
+                        data-oversight="Kesekretariatan, Keuangan, Komunikasi dan Informasi"
+                    >
                     Sekretaris Kabinet
                     </div>
                     <div class="h-12 w-[2px] bg-black relative z-line"></div>
@@ -228,7 +250,15 @@ nav.is-sticky {
                 <div class="node-wrapper">
                 <div class="line-v h-16 top-0 z-line"></div>
                 
-                <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box">
+                @php $menkoInternal = $leaders['menteri-koordinator-internal'] ?? null; @endphp
+                <div 
+                    class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
+                    data-name="{{ $menkoInternal->nama_fungsionaris ?? 'Muhammad Hammam Shidqi' }}"
+                    data-role="Menteri Koordinator Internal"
+                    data-photo="{{ asset('images/' . ($menkoInternal->photo_path ?? 'Foto_MenkoInternal_Muhammad.png')) }}"
+                    data-desc="Mengkoordinasikan kementerian yang berfokus pada penguatan internal organisasi dan pengembangan sumber daya mahasiswa."
+                    data-oversight="Dalam Negeri, PSDM, Agama"
+                >
                     Menko Internal
                 </div>
                 <div class="h-4 w-[2px] bg-black relative z-line"></div>
@@ -264,7 +294,15 @@ nav.is-sticky {
                 <div class="node-wrapper">
                 <div class="line-v h-16 top-0 z-line"></div>
                 
-                <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box">
+                @php $menkoMhs = $leaders['menteri-koordinator-kemahasiswaan'] ?? null; @endphp
+                <div 
+                    class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
+                    data-name="{{ $menkoMhs->nama_fungsionaris ?? 'Aditya Rizal Pramudya' }}"
+                    data-role="Menteri Koordinator Kemahasiswaan"
+                    data-photo="{{ asset('images/' . ($menkoMhs->photo_path ?? 'Foto_MenkoKemahasiswaan_Aditya.png')) }}"
+                    data-desc="Mengkoordinasikan kementerian yang bergerak di bidang pelayanan minat, bakat, riset, dan kesejahteraan seluruh mahasiswa."
+                    data-oversight="Advokesma, Minat & Bakat, Riset & Keilmuan, Ekonomi Kreatif"
+                >
                     Menko Kemahasiswaan
                 </div>
 
@@ -306,7 +344,15 @@ nav.is-sticky {
                 
                 <div class="line-v h-16 top-0 z-line"></div>
                 
-                <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box">
+                @php $menkoMasy = $leaders['menteri-koordinator-kemasyarakatan'] ?? null; @endphp
+                <div 
+                    class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
+                    data-name="{{ $menkoMasy->nama_fungsionaris ?? 'Auliya Putra' }}"
+                    data-role="Menteri Koordinator Kemasyarakatan"
+                    data-photo="{{ asset('images/' . ($menkoMasy->photo_path ?? 'Foto_MenkoKemasyarakatan_Auliya.png')) }}"
+                    data-desc="Mengkoordinasikan kementerian yang berfokus pada pengabdian masyarakat dan pelestarian lingkungan hidup."
+                    data-oversight="Lingkungan Hidup, Sosial Masyarakat"
+                >
                     Menko Kemasyarakatan
                 </div>
                 <div class="h-4 w-[2px] bg-black relative z-line"></div>
@@ -334,7 +380,15 @@ nav.is-sticky {
                 <div class="node-wrapper">
                 <div class="line-v h-16 top-0 z-line"></div>
                 
-                <div class="relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box">
+                @php $menkoRelasi = $leaders['menteri-koordinator-relasi-dan-pergerakan'] ?? null; @endphp
+                <div 
+                    class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
+                    data-name="{{ $menkoRelasi->nama_fungsionaris ?? 'Revanza Dhimas Erudita' }}"
+                    data-role="Menteri Koordinator Relasi dan Pergerakan"
+                    data-photo="{{ asset('images/' . ($menkoRelasi->photo_path ?? 'Foto_MenkoRelasidanPegerakan_Revanza.png')) }}"
+                    data-desc="Mengkoordinasikan kementerian yang bergerak di bidang kajian sosial politik dan hubungan luar negeri organisasi."
+                    data-oversight="Sosial Politik, Luar Negeri"
+                >
                     Menko Relasi dan Pergerakan
                 </div>
                 <div class="h-4 w-[2px] bg-black relative z-line"></div>
@@ -364,6 +418,54 @@ nav.is-sticky {
 
         </div>
         </section>
+
+    {{-- MODAL DETAIL PEMIMPIN --}}
+    <div id="leaderModal" class="fixed inset-0 z-[100] hidden">
+        {{-- Overlay --}}
+        <div class="absolute inset-0 bg-dark/80 backdrop-blur-sm"></div>
+        
+        {{-- Modal Content --}}
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl relative animate-in fade-in zoom-in duration-300">
+                {{-- Close Button --}}
+                <button onclick="closeLeaderModal()" class="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md flex items-center justify-center text-dark transition-all">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+
+                <div class="flex flex-col md:flex-row">
+                    {{-- Photo Section --}}
+                    <div class="md:w-2/5 h-64 md:h-auto bg-gray-100 relative">
+                        <img id="modalPhoto" src="" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent md:hidden"></div>
+                    </div>
+
+                    {{-- Info Section --}}
+                    <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                        <div class="mb-6">
+                            <span id="modalRole" class="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full mb-2 inline-block"></span>
+                            <h3 id="modalName" class="text-2xl md:text-3xl font-bold text-dark leading-tight"></h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Deskripsi</h4>
+                                <p id="modalDesc" class="text-gray-600 text-sm leading-relaxed"></p>
+                            </div>
+
+                            <div id="oversightContainer" class="hidden">
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Menaungi Kementerian</h4>
+                                <p id="modalOversight" class="text-primary text-sm font-semibold"></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-100">
+                            <img src="{{ asset('images/logobemkbmpolines.png') }}" alt="Logo BEM" class="h-8 opacity-20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -426,6 +528,49 @@ nav.is-sticky {
             y: 50,
             duration: 0.8,
             stagger: 0.2
+        });
+
+        // 5. Modal Detail Pemimpin
+        const modal = document.getElementById('leaderModal');
+        const nodes = document.querySelectorAll('.leader-node');
+        
+        nodes.forEach(node => {
+            node.addEventListener('click', () => {
+                const name = node.getAttribute('data-name');
+                const role = node.getAttribute('data-role');
+                const photo = node.getAttribute('data-photo');
+                const desc = node.getAttribute('data-desc');
+                const oversight = node.getAttribute('data-oversight');
+
+                document.getElementById('modalName').textContent = name;
+                document.getElementById('modalRole').textContent = role;
+                document.getElementById('modalPhoto').src = photo;
+                document.getElementById('modalPhoto').alt = name;
+                document.getElementById('modalDesc').textContent = desc;
+
+                const oversightContainer = document.getElementById('oversightContainer');
+                if (oversight) {
+                    document.getElementById('modalOversight').textContent = oversight;
+                    oversightContainer.classList.remove('hidden');
+                } else {
+                    oversightContainer.classList.add('hidden');
+                }
+
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        window.closeLeaderModal = function() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('bg-dark/80')) {
+                closeLeaderModal();
+            }
         });
     });
 </script>

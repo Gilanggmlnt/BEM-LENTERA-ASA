@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Fungsionaris;
 use App\Models\Jabatan;
+use App\Models\Berita;
 use App\Models\Kementerian;
 use App\Models\Proker;
 use App\Http\Controllers\KementerianController;
-use Illuminate\Support\Str; // Import Str facade
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,27 +66,36 @@ Route::get('/', function () {
     // Fetch all prokers for calendar
     $allProkers = Proker::with('kementerian')->get();
 
-    return view('pages.beranda', compact('presiden', 'topOfficials', 'upcomingProkers', 'allProkers'));
+    // Fetch latest 3 news items
+    $newsItems = Berita::orderBy('date', 'desc')->take(3)->get();
+
+    return view('pages.beranda', compact('presiden', 'topOfficials', 'upcomingProkers', 'allProkers', 'newsItems'));
 });
 
-// Route baru untuk halaman Profil (keeping existing functionality for now, might be unused or for a different profile)
+// Route baru untuk halaman Profil
 Route::get('/profile', function () {
-    // Cari jabatan 'Presiden Mahasiswa' (jika diperlukan di halaman profil)
-    $jabatanPresma = Jabatan::where('nama_jabatan', 'Presiden Mahasiswa')->first();
-    
-    $presma = null;
-    if ($jabatanPresma) {
-        $presma = Fungsionaris::where('id_jabatan', $jabatanPresma->id)->first();
-    }
+    // Fetch Leadership Team
+    $leaders = Fungsionaris::whereHas('jabatan', function ($query) {
+        $query->whereIn('nama_jabatan', [
+            'Presiden Mahasiswa',
+            'Wakil Presiden Mahasiswa',
+            'Sekretaris Kabinet',
+            'Menteri Koordinator Internal',
+            'Menteri Koordinator Kemahasiswaan',
+            'Menteri Koordinator Kemasyarakatan',
+            'Menteri Koordinator Relasi dan Pergerakan'
+        ]);
+    })->with('jabatan')->get()->keyBy(function($item) {
+        return Str::slug($item->jabatan->nama_jabatan);
+    });
 
     // New data for info cards
     $totalFungsionaris = Fungsionaris::count();
     $totalKementerian = Kementerian::count();
-    $totalProker = Proker::count(); // Assuming Proker model exists
+    $totalProker = Proker::count();
     $periode = "2025/2026";
 
-    // Mengembalikan view 'pages.profile' dengan data $presma
-    return view('pages.profile', compact('presma', 'totalFungsionaris', 'totalKementerian', 'totalProker', 'periode'));
+    return view('pages.profile', compact('leaders', 'totalFungsionaris', 'totalKementerian', 'totalProker', 'periode'));
 });
 
 // Route for Kementerian Detail Page
@@ -94,3 +104,26 @@ Route::get('/kementerian/{slug}', [KementerianController::class, 'show'])->name(
 // Route for Proker Detail Page
 use App\Http\Controllers\ProkerController;
 Route::get('/proker/{slug}', [ProkerController::class, 'show'])->name('proker.show');
+
+use App\Http\Controllers\AdminController;
+
+// Admin Authentication Routes
+Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'login']);
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+// Admin Dashboard Routes (Protected by auth middleware)
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/news/create', [AdminController::class, 'create'])->name('admin.news.create');
+    Route::post('/news', [AdminController::class, 'store'])->name('admin.news.store');
+    Route::get('/news/{berita}/edit', [AdminController::class, 'edit'])->name('admin.news.edit');
+    Route::put('/news/{berita}', [AdminController::class, 'update'])->name('admin.news.update');
+    Route::delete('/news/{berita}', [AdminController::class, 'destroy'])->name('admin.news.destroy');
+});
+
+// Route for News Detail Page
+Route::get('/berita/{slug}', function ($slug) {
+    $berita = Berita::where('slug', $slug)->firstOrFail();
+    return view('pages.berita_detail', compact('berita'));
+})->name('berita.show');

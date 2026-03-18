@@ -130,13 +130,17 @@ nav.is-sticky {
                     <h2 class="text-xl font-bold text-dark">Agenda & Program Kerja</h2>
                 </div>
                 <div class="grid sm:grid-cols-2 gap-4">
-                    @forelse($kementerian->prokers->unique('nama_proker') as $program)
+                    {{-- Display Prokers --}}
+                    @foreach($kementerian->prokers->unique('nama_proker') as $program)
                     @php
                         $prokerUrl = $program->slug ? route('proker.show', $program->slug) : '#';
                     @endphp
                     <a href="{{ $prokerUrl }}" class="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:border-primary/50 hover:shadow-md transition-all group">
                         <div class="flex items-start justify-between mb-2">
-                            <h4 class="font-semibold text-dark group-hover:text-primary transition-colors">{{ $program->nama_proker }}</h4>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Program Kerja</span>
+                                <h4 class="font-semibold text-dark group-hover:text-primary transition-colors">{{ $program->nama_proker }}</h4>
+                            </div>
                             <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full whitespace-nowrap ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar inline w-3 h-3 mr-1"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                                 {{ \Carbon\Carbon::parse($program->tanggal_pelaksanaan)->format('d M Y') }}
@@ -150,9 +154,28 @@ nav.is-sticky {
                             </span>
                         </div>
                     </a>
-                    @empty
-                    <p class="col-span-full text-center text-gray-500">Tidak ada program kerja ditemukan untuk kementerian ini.</p>
-                    @endforelse
+                    @endforeach
+
+                    {{-- Display Agendas --}}
+                    @foreach($kementerian->agendas as $agenda)
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:border-primary/50 hover:shadow-md transition-all group">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 mb-1 block">Agenda</span>
+                                <h4 class="font-semibold text-dark">{{ $agenda->nama_agenda }}</h4>
+                            </div>
+                            <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full whitespace-nowrap ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar inline w-3 h-3 mr-1"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                                {{ $agenda->pelaksanaan_agenda }}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-600 line-clamp-3">{{ $agenda->deskripsi_agenda }}</p>
+                    </div>
+                    @endforeach
+
+                    @if($kementerian->prokers->isEmpty() && $kementerian->agendas->isEmpty())
+                    <p class="col-span-full text-center text-gray-500">Tidak ada agenda atau program kerja ditemukan untuk kementerian ini.</p>
+                    @endif
                 </div>
             </div>
         </div>

@@ -1,0 +1,166 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Agenda;
+use App\Models\Kementerian;
+use Illuminate\Database\Seeder;
+
+class AgendaSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        // Clear existing data
+        Agenda::query()->delete();
+
+        $kementerians = Kementerian::all()->keyBy('nama_kementerian');
+
+        $agendas = [
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Live Report & Even Report', 'pelaksanaan' => 'Setiap Proker', 'deskripsi' => 'Mempublikasikan Live Report ke Media Sosial Instagram Resmi BEM Polines.'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Desain Jaket Kabinet', 'pelaksanaan' => 'Agustus 2025', 'deskripsi' => 'Membuat Desain Jaket Kabinet BEM KBM POLINES Kabinet Lentera Asa Periode 2025/2026.'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Grup Maba', 'pelaksanaan' => '25 Agustus 2025', 'deskripsi' => 'Membuat Grup Angkatan guna menyebarkan informasi dari internal maupunn eksternal'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Foto STO Kantor & Instagram ', 'pelaksanaan' => '1 Kali ', 'deskripsi' => 'Pengenalan fungsionaris BEM melalui banner maupun sosial media instagram bem_polines'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Peringatan Hari Besar & Hari penting', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Mempublikasikan hari-hari besar atau hari penting pada instagram bem_polines'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Penaungan Ormawa ', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Memberikan sosialisasi kepada pengelola media sosial agar berfungsi secara optimal'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Peringatan Hari Jadi Ormawa (PARIJAWA)', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Mempublikasikan hari jadi setiap ormawa di instagram bem_polines'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Konten Info BEM', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Menyebarkan Informasi seputar proker BEM dan konten umum kepada mahasiswa polines.'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'TRIVIA', 'pelaksanaan' => '2 bulan sekali ', 'deskripsi' => 'Konten intermezo yang berisi informasi edukasional.'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Website BEM KBM Polines', 'pelaksanaan' => '1 kali ', 'deskripsi' => 'Membuat website untuk menyalurkan informasi, kegiatan agenda, program kerja, dan fugsionaris BEM KBM Polines'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Desain Ultah Fungsionaris', 'pelaksanaan' => '1 kali', 'deskripsi' => ' Membuat desian ucapan ulangtahun pada awal kepengurusan'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Media Partner ', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Wujud kerjasama eksternal maupun internal yang nantinya akan di publikasi di instagram bem_polines'],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Konten Video ', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Pemberagaman konten BEM Polines sebagai wujud optimalisasi sosial media BEM '],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Info Agenda Ormawa ', 'pelaksanaan' => 'Sebulan 1 kali ', 'deskripsi' => 'Pengumpulan agenda / proker tiap ormawa guna dipublikasikan melalui instagram bem_polines kepada mahasiswa umum '],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Info Lomba & Beasiswa', 'pelaksanaan' => 'Sebulan 1 kali ', 'deskripsi' => 'Mempublikasi info lomba & beasiswa  guna dipublikasikan melalui instagram bem_polines kepada mahasiswa umum '],
+            ['kementerian' => 'Komunikasi dan Informasi', 'nama' => 'Instagram BEM KBM Polines', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Mempublikasi informasi baik dari internal maupun eksternal kepada mahasiswa polines dan khalayak umum '],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'PKM Center', 'pelaksanaan' => 'November 2025 - Selesai', 'deskripsi' => 'Melakukan serangkaian kegiatan PKM yang diselenggarakan oleh Kemendikbudristek mulai dari Sosialisasi, Seleksi Internal, coaching, dll, yang diikuti oleh mahasiswa polines'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Sosialiasasi PPKO', 'pelaksanaan' => '7 Maret 2026', 'deskripsi' => 'Melakukan sosialisasi Program Penguatan Kapasitas Organisasi Kemahasiswaan yang diselenggarakan oleh kemendikbudristek yang dihadiri oleh delegasi ormawa polines'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Seminar Tematik', 'pelaksanaan' => '11-Apr-26', 'deskripsi' => 'Melaksanakan kegiatan seminar bertema kewirausahaan dengan mengundang pembicara dan dapat dihadiri oleh mahasiswa polines'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Penaungan', 'pelaksanaan' => 'satu periode 3 kali', 'deskripsi' => 'Melakukan penaungan ke setiap ormawa yang dinaungi oleh kementerian riskel dalam rangka penampungan aspirasi serta pendampingan organisasi'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Peningkatan Akademik', 'pelaksanaan' => 'Rutin', 'deskripsi' => 'Membantu meningkatan prestasi akademik mahasiswa dengan rutin membagikan info lomba terbaru di berbagai bidang melalui berbagai platform (saluran info lomba & IG BEM)'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Pendataan Mawapres', 'pelaksanaan' => 'Rutin', 'deskripsi' => 'Melakukan pendataan terhadap mahasiswa polines yang memiliki prestasi baik akademik maupun non akademik untuk sumber data prestasi mahasiswa'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Riset', 'pelaksanaan' => 'Rutin', 'deskripsi' => 'Melakukan riset berdasarkan topik tertentu yang dapat digunakan untuk acuan mahasiswa dalam mencari suatu informasi'],
+            ['kementerian' => 'Riset dan Keilmuan', 'nama' => 'Media Kreatif', 'pelaksanaan' => 'Rutin', 'deskripsi' => 'Membuat konten melalui media instagram yang berisi beberapa informasi'],
+            ['kementerian' => 'Agama', 'nama' => 'Pengawalan Pesima ', 'pelaksanaan' => '1 Kali ', 'deskripsi' => 'memastikan semua aspek teknis dan operasional berjalan dengan baik, serta memberikan pengalaman positif bagi semua peserta.'],
+            ['kementerian' => 'Agama', 'nama' => 'Moderasi Beragama', 'pelaksanaan' => '1 Kali', 'deskripsi' => ' Memasukkan nilai-nilai moderasi beragama ke dalam rangkaian kegiatan PESIMA sebagai bagian dari pembinaan karakter mahasiswa baru.'],
+            ['kementerian' => 'Agama', 'nama' => 'Penaungan HMJ', 'pelaksanaan' => '3 Kali ', 'deskripsi' => 'Koordinasi di laksanakan tiga bulan sekali, membahas masalah/kendala yang ada di HMJ bidang keagamaan dan kegiatan yang akan dilaksanakan.'],
+            ['kementerian' => 'Agama', 'nama' => 'Penaungan UKM & OKM Islam', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Kegiatan ini dilakukan melalui koordinasi dengan perwakilan UKM dan OKM dalam satu periode kepengurusan, yang berlangsung selama tiga pertemuan untuk membahas permasalahan internal serta rencana kegiatan.'],
+            ['kementerian' => 'Agama', 'nama' => 'Buka Bersama Kabinet ', 'pelaksanaan' => '6 Maret 2026', 'deskripsi' => 'Kegiatan buka bersama dilaksanakan pada bulan Ramadhan yang akan dihadiri oleh seluruh fungsionaris BEM KBM POLINES. Disertai dengan khataman Al-Qur’an dan tausiyah singkat atau kultum.'],
+            ['kementerian' => 'Agama', 'nama' => 'Penaungan Rohkris', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Penaungan akan dilaksanakan setiap tiga bulan sekali, dengan fokus pembahasan pada permasalahan serta kendala internal yang dihadapi, usulan maupun dukungan yang dapat diberikan oleh BEM,'],
+            ['kementerian' => 'Agama', 'nama' => 'Penaungan Hindu, Budha, Konghucu, Kepercayaan', 'pelaksanaan' => '3 Kali ', 'deskripsi' => 'Mewadahi kebutuhan spiritual dan aspirasi, sekaligus mempererat hubungan, membantu menyelesaikan permasalahan yang mereka alami, serta meningkatkan tanggapan dan keaktifan mereka di lingkungan kampus.'],
+            ['kementerian' => 'Agama', 'nama' => 'Penaungan Hafizh', 'pelaksanaan' => '3 Kali ', 'deskripsi' => 'Meningkatkan keimanan, mempererat dan menumbuhkan semangat hafalan serta menjadi wadah untuk pengembangan diri dan potensi hafidz untuk mengikuti berbagai perlombaan.'],
+            ['kementerian' => 'Agama', 'nama' => 'Bersih-Bersih Tempat Ibadah ', 'pelaksanaan' => '8 Kali', 'deskripsi' => ' Meningkatkan kualitas fasilitas ibadah di lingkungan Polines agar mendukung terciptanya suasana ibadah yang khusyuk, bersih, dan nyaman bagi seluruh civitas akademika.'],
+            ['kementerian' => 'Agama', 'nama' => 'Ngaji Kabinet', 'pelaksanaan' => 'Sebulan 1 Kali', 'deskripsi' => 'Meningkatkan spiritualitas fungsionaris muslim BEM KBM Polines agar senantiasa bertakwa kepada Tuhan Yang Maha Esa, sekaligus mempererat ukhuwah islamiyah dan solidaritas antar fungsionaris dalam bingkai nilai keislaman.'],
+            ['kementerian' => 'Agama', 'nama' => 'Konten Keagamaan', 'pelaksanaan' => '1 minggu sekali', 'deskripsi' => ''],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Lokakarya', 'pelaksanaan' => '23 Agustus 2025', 'deskripsi' => 'Kegiatan yang dilaksanakan dalam bentuk sosialisasi yang bertujuan untuk menyelaraskan format surat, proposal, serta Laporan Pelaksanaan Kegiatan (LPK) yang berlaku di Politeknik Negeri Semarang. '],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Penaungan ', 'pelaksanaan' => 'Dua Kali dalam Satu Periode', 'deskripsi' => 'Proses pembinaan, pendampingan, serta pengawasan terhadap ormawa yang berada di yang bertujuan untuk memastikan bahwa seluruh kegiatan dan administrasi Ormawa berjalan sesuai dengan aturan, pedoman organisasi, serta mendukung tercapainya tujuan bersama. '],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Koreksian ', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'kegiatan pembetulan/perbaikan/kesalahan tulis proposal dan lpk ormawa terhadap format loka'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Rekapan', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'kegiatan penyusunan kembali data proposal dan lpk ormawa untuk melakukan pencairan'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Pencairan', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'kegiatan penyaluran danor dari bpm(banggar) melalui keu ke ormawa yg terjadwal pencairan'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Sosialisasi LPJ', 'pelaksanaan' => '17 Januari 2026', 'deskripsi' => 'Kegiatan penyampaian informasi dan penjelasan mengenai tata cara penyusunan, format, serta ketentuan dalam pembuatan Laporan Pertanggungjawaban (LPJ).'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'LPJ ORMAWA', 'pelaksanaan' => '1 kali ', 'deskripsi' => 'Agenda tahunan yang diselenggarakan pada akhir masa kepengurusan, di mana kegiatan ini merupakan proses penyampaian Laporan Pertanggungjawaban (LPJ) oleh Ormawa kepada BEM dan BPM serta OKM BEM kepada BEM. '],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Pengarsipan Proposal, LPK, dan LPJ Internal serta Ormawa ', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Kegiatan pengelolaan dan penyimpanan meliputi proposal kegiatan, Laporan Pelaksanaan Kegiatan (LPK), serta Laporan Pertanggungjawaban (LPJ) baik dari internal BEM maupun dari Ormawa.'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Pengarsipan dan Penomoran Surat Masuk serta Keluar dalam Satu Pintu', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Kegiatan ini merupakan sistem pengelolaan surat yang dilakukan secara terpusat melalui satu bagian melalui G-Drive. Setiap surat yang masuk maupun keluar akan dicatat, diberi nomor, serta diarsipkan secara sistematis sehingga proses administrasi menjadi lebih tertib, terorganisir, dan mudah dilacak.'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Notulensi & Presensi Internal BEM', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Kegiatan pencatatan jalannya rapat atau pertemuan organisasi serta pendataan kehadiran pengurus dalam setiap kegiatan internal. Notulensi berfungsi sebagai dokumentasi hasil pembahasan dan keputusan rapat, sedangkan presensi digunakan untuk mengetahui tingkat partisipasi dan kedisiplinan pengurus.'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Pengelolaan surat Masuk (Hard File)', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Memastikan bahwa setiap surat yang masuk dapat terdokumentasi dengan baik serta dapat ditindaklanjuti oleh pihak yang berkepentingan.'],
+            ['kementerian' => 'Kesekretariatan', 'nama' => 'Pembinaan Sekretariat Internal dan Ormawa', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Kegiatan pendampingan dan penguatan sistem administrasi organisasi, baik di lingkungan internal BEM maupun pada organisasi mahasiswa.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'OPEN DONASI', 'pelaksanaan' => 'Sebulan 1 Kali', 'deskripsi' => 'Open Donasi merupakan salah satu program rutin Kementerian Sosial Masyarakat BEM Polines yang dilaksanakan setiap hari Jumat dengan tujuan menebarkan kebaikan kepada masyarakat yang membutuhkan.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'POLINES MENGAJAR', 'pelaksanaan' => '8x dalam 1 periode', 'deskripsi' => 'Polines Mengajar merupakan program pemberdayaan masyarakat di bidang pendidikan yang bertujuan untuk menginspirasi peserta didik Sekolah Dasar, panti asuhan, dan komunitas yang ada di wilayah semarang khususnya mereka yang memiliki keterbatasan akses terhadap pendidikan agar dapat menjadi generasi yang lebih unggul dan berkualitas.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'DESA MITRA', 'pelaksanaan' => '3 kali', 'deskripsi' => 'Desa mitra adalah program pengabdian yang diinisiasi oleh kementerian sosial masyarakat yang berfokus pada pengembangan potensi lokal yang ada di desa tersebut.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'GALANG DANA', 'pelaksanaan' => 'Insidential', 'deskripsi' => 'Galang Dana adalah kegiatan penggalangan dana bersifat insidental yang dilaksanakan oleh Kementerian Sosial Masyarakat sebagai bentuk kepedulian terhadap sesama yang sedang membutuhkan bantuan.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'LATIHAN GABUNGAN', 'pelaksanaan' => '1 kali ', 'deskripsi' => 'Latihan Gabungan merupakan program baru yang diinisiasi oleh Kementerian Sosial Masyarakat BEM Polines dan dilaksanakan bersama tiga UKM di bawah naungannya.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'SOSMAS KELILING', 'pelaksanaan' => 'minimal 2 kali ', 'deskripsi' => 'Sosmas Keliling merupakan agenda Sosmas yang berbentuk studi banding antar Sosmas dari universitas lain.'],
+            ['kementerian' => 'Sosial Masyarakat', 'nama' => 'PENAUNGAN', 'pelaksanaan' => '3 kali dalam 1 periode', 'deskripsi' => 'Kegiatan untuk melakukan penyerapan aspirasi dari ukm/okm naungan sosmas.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Penyusunan Buku Pedoman Birokrasi', 'pelaksanaan' => '1 kali', 'deskripsi' => 'Menyusun alur birokrasi sebagai acuan yang akan digunakan oleh ormawa dalam melakukan peminjaman tempat, alat, dan kendaraan.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Sosialisasi Birokrasi', 'pelaksanaan' => '1 kali', 'deskripsi' => 'Mensosialisasikan alur birokrasi yang sebelumnya sudah disusun dalam buku pedoman birokrasi kepada Ormawa.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Private Birokrasi', 'pelaksanaan' => '1 Bulan ', 'deskripsi' => ''],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Piket Pelayanan Birokrasi', 'pelaksanaan' => 'Hari Kerja', 'deskripsi' => 'Memberikan pelayanan peminjaman tempat untuk Ormawa dan Mahasiswa'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Penyusunan Handbook KKO', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Melakukan pendataan penggunaan tempat Program Kerja dan Agenda Ormawa per setengah periode.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Konferensi Ketua Ormawa (KKO)', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Forum yang mempertemukan seluruh ketua ormawa di Polines guna membahas persamaan tempat dan tanggal yang diajukan melalui handbook KKO'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Gotong Royong BEM', 'pelaksanaan' => '2 kali', 'deskripsi' => 'Membersihkan lingkungan kantor BEM sekaligus melakukan pendataan ulang inventaris pada awal dan akhir periode'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Piket Kabinet', 'pelaksanaan' => 'Hari Kerja', 'deskripsi' => 'Melaksanakan tugas piket secara bergiliran untuk memastikan operasional dan koordinasi kegiatan kabinet berjalan dengan tertib dan lancar.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Peminjaman Invantaris', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Memberikan fasilitas peminjaman inventaris kepada Ormawa yang membutuhkan alat-alat penunjang kegiatan proker mapu agenda'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Pengadaan Inventaris', 'pelaksanaan' => '1 Kali', 'deskripsi' => 'Memperbaharui inventaris BEM gua menunjang jalannya operasioanal dan tugas sehingga dapat berjalan optimal'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Kunjungan HMJ', 'pelaksanaan' => '3 kali', 'deskripsi' => 'Kunjungan HMJ dilakukan untuk menyerap aspirasi dan menjalin silatuahmi antara BEM dan HMJ.'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Koordinator Temu HMJ', 'pelaksanaan' => '26 Februari 2026', 'deskripsi' => 'Mengkoordinir kegiatan Temu HMJ yang bertujuan untuk meningkatkan solidaritas dan silaturahmi antara 5 Himpunan Mahasiswa Jurusan'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Penyampaian Aspirasi Kepada Institusi', 'pelaksanaan' => '3 kali', 'deskripsi' => 'Menjembatani aspirasi yang telah disampaikan Ormawa melalui penaungan yang telah diadakan oleh tiap kementerian terkait sarana dan prasarana serta aspirasi lainnya'],
+            ['kementerian' => 'Dalam Negeri', 'nama' => 'Koordinator Kementerian Penaungan', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Forum diskusi atas aspirasi yang disampaikan oleh tiap ormawa yang telah melakukan penaungan melalui kementerian yang menaungi'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Nyala Dialektika', 'pelaksanaan' => '1 Kali ', 'deskripsi' => 'Acara ini dirancang sebagai sebuah event dua hari yang memadukan elemen seni, intelektual, dan budaya populer.'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Nobar dan Diskusi ', 'pelaksanaan' => '', 'deskripsi' => 'Sebuah acara diskusi dimana akan ditontonkan sebuah film yang berkaitan tentang Sosial dan Politik.'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Kajian Isu Strategis', 'pelaksanaan' => 'Insidental', 'deskripsi' => 'Menentukan pembahasan isu yang nantinya akan dikaji dari internal kemensospol'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Sambang Sospol ', 'pelaksanaan' => 'Internal : 1 kali, Eksternal : 2 kali dalam 1 Periode', 'deskripsi' => 'Pertemuan internal dengan HMJ dan eksternal dengan BEM institusi lain.'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Propaganda Kreatif', 'pelaksanaan' => '', 'deskripsi' => 'Membuat desain feed propaganda kreatif yang menarik dan sesuai dengan kajian yang didiskusikan.'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Aksi Pergerakan & Konsolidasi', 'pelaksanaan' => 'Insidental', 'deskripsi' => 'Melakukan diskusi internal kemensospol terhadap isu yang ada dan konsolidasi dengan mahasiswa umum.'],
+            ['kementerian' => 'Sosial Politik', 'nama' => 'Forum Perempuan', 'pelaksanaan' => '1 bulan sekali', 'deskripsi' => 'Bekerja sama dengan Satgas PPKS untuk menyediakan sarana penampungan informasi mengenai aduan pelecehan.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Penaungan ', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Melakukan kunjungan dan pertemuan dengan ORMAWA bidang minat dan bakat.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Ngombrol Minat dan Bakat / NGOMBAK', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Melaksanakan kegiatan diskusi atau podcast yang bertujuan menambah wawasan mahasiswa di bidang non-akademik.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Kolom Info Lomba Non-Akademik', 'pelaksanaan' => 'Tiap Bulan', 'deskripsi' => 'Menyediakan dan menyebarkan informasi lomba non-akademik kepada mahasiswa Polines.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Data Prestasi Mahasiswa Non-Akademik', 'pelaksanaan' => 'Tiap Bulan', 'deskripsi' => 'Melakukan pendataan mahasiswa berprestasi di bidang non-akademik.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Olahraga Kabinet', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Melaksanakan kegiatan olahraga bersama antar fungsionaris kabinet.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Rupawan Lensa Festival – Mini Concert dan Showcase', 'pelaksanaan' => '1 Kali dalam 1 periode', 'deskripsi' => 'Menyelenggarakan kegiatan pertunjukan seni berupa mini concert dan showcase.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Penaungan Suporter', 'pelaksanaan' => 'sebulan sekali – Kondisional', 'deskripsi' => 'Melaksanakan kegiatan pendampingan dan koordinasi dengan komunitas suporter mahasiswa.'],
+            ['kementerian' => 'Minat dan Bakat', 'nama' => 'Ormawa Cup 2026', 'pelaksanaan' => '1 Kali dalam 1 periode', 'deskripsi' => 'Menyelenggarakan kompetisi olahraga antar ORMAWA di lingkungan Politeknik Negeri Semarang.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Branding Instagram', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Koor. Instagram mengupload konten setiap hari Senin dan Kamis.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Pendampingan Mahasiswa Bermasalah', 'pelaksanaan' => 'Situasional', 'deskripsi' => 'Membantu mendampingi dan mencari jalan keluar untuk mahasiswa yang sedang terkena masalah.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Pengawalan isu dan program Kemendikbud', 'pelaksanaan' => '1 Bulan 1 kali', 'deskripsi' => 'Menginventarisir isu yang berkaitan dengan advokasi dari kebijakan institusi.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'FORKESMA', 'pelaksanaan' => '1 Kali', 'deskripsi' => 'Mengkaji isu yang berkaitan dengan keresahan isu isu yang ada di lingkungan Mahasiswa.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Advo Sowan', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Penaungan 5 HMJ'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Sampling', 'pelaksanaan' => '3 Kali ', 'deskripsi' => 'Seluruh fungsio kementrian advokesma disebar ke seluruh jurusan untuk terjun langsung menanyai aspirasi.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Curma (Curahan Mahasiswa)', 'pelaksanaan' => 'Situasional', 'deskripsi' => 'Melakukan sampling terhadap mahasiswa umum terkait aspirasi mahasiswa.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Temu Direktur', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Penyampain aspirasi mahasiswa yang telah dikolektif oleh kementrian advokesma kepada jajaran direktur.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Kesma Care', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Mahasiswa/i dapat memilih untuk menghubungi melalui media Whatsapp Bersifat anonim.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Infopedia', 'pelaksanaan' => '2 minggu sekali / Sebulan 2 Kali', 'deskripsi' => 'Memberikan informasi internal kampus, eksternal kampus, penting, dan tips.'],
+            ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'PODKESMA', 'pelaksanaan' => '1 Kali ', 'deskripsi' => 'Memberikan informasi menarik, penting, dan isu-isu dari jajaran petinggi polines.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Diskusi Lingkungan x Aksi Tanam Mangrove', 'pelaksanaan' => '07 & 14 Desember 2025', 'deskripsi' => 'Seminar terkait kelestarian lingkungan pesisir yang dilanjutkan dengan Aksi Tanam Mangrove.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'World Cleanup Day', 'pelaksanaan' => '20-Sep-25', 'deskripsi' => 'Aksi kegiatan bersih-bersih dalam rangka memperingati Hari Bersih-Bersih Sedunia.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Tanam Pohon X Desamitra', 'pelaksanaan' => '24 Januari 2026', 'deskripsi' => 'Kolaborasi Kementerian Lingkungan Hidup dan Kementerian Sosial Masyarakat dalam mendukung penghijauan.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Free Jumat Plastik', 'pelaksanaan' => 'Setiap Jumat', 'deskripsi' => 'Berfokus pada pengurangan penggunaan sampah plastik sekali pakai di kantor BEM dan BPM.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Program bank sampah POLINES', 'pelaksanaan' => 'sosil 5-10-2025 & 1 periode penyetoran', 'deskripsi' => 'Kegiatan pengelolaan sampah yang bertujuan mengurangi limbah.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Clean Mountain', 'pelaksanaan' => '01&02-05-2026', 'deskripsi' => 'Aksi pembersihan jalur pendakian yang disertai dengan penanaman pohon di Gunung Andong.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => '100 Bibit Pohon Polines', 'pelaksanaan' => '6 Juli 2026', 'deskripsi' => 'Penanaman pohon di sekitar area kampus Politeknik Negeri Semarang.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Bank Sampah WARNA', 'pelaksanaan' => '12&13-08-2025', 'deskripsi' => 'Pemilahan sampah makanan mahasiswa baru saat WARNA berlangsung.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Kajian & Konten Edukasi', 'pelaksanaan' => '3 kali dalam 1 periode', 'deskripsi' => 'Media edukasi, informasi, dan ajakan aksi agar masyarakat semakin sadar lingkungan.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Fogging PKM', 'pelaksanaan' => '18 Januari 2026', 'deskripsi' => 'Inisiatif preventif untuk memutus mata rantai perkembangbiakan nyamuk penyebab penyakit.'],
+            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'JagaRaya 2025 LH x Indosat Ooredoo Hutchison', 'pelaksanaan' => '10 Desember 2025', 'deskripsi' => 'Aksi Clean Up kampus bersama para mahasiswa yang tergabung dalam volunteer jagaraya.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'Sosialisasi LKMM PRA DASAR', 'pelaksanaan' => '14 Juli 2025', 'deskripsi' => 'Mensosialisasikan materi apa saja yang dibutuhkan mahasiswa baru dalam peralihan dari siswa menjadi mahasiswa.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'Sosialisasi LKMM DASAR', 'pelaksanaan' => '6-Sep-25', 'deskripsi' => 'Mensosialisasikan materi apa saja yang dibutuhkan mahasiswa untuk menjadi calon fungsionaris.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'Makrab Kabinet', 'pelaksanaan' => '27-28 September 2025', 'deskripsi' => 'Mengakrabkan dan memperkuat komunikasi seluruh fungsionaris BEM KBM Polines pada awal periode.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'Sekolah Staff Muda', 'pelaksanaan' => 'September 2025 - Mei 2026', 'deskripsi' => 'Mempersiapkan regenerasi dari BEM itu sendiri dengan membuat kurikulum persiapan.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'LKMM MADYA', 'pelaksanaan' => '31 Januari - 1 Februari 2026', 'deskripsi' => 'Melatih sikap-sikap kepemimpinan seorang calon fungsionaris.'],
+            ['kementerian' => 'Pengembangan Sumber Daya Mahasiswa', 'nama' => 'Penaungan Ormawa (Ormawa Tour)', 'pelaksanaan' => '2 Kali dalam 1 Periode', 'deskripsi' => 'Mengontrol dan memberi wadah untuk sharing kepada para Ormawa dalam hal kaderisasi.'],
+            ['kementerian' => 'Keuangan', 'nama' => 'Lokakarya', 'pelaksanaan' => '23 Agustus 2025', 'deskripsi' => 'Sosialisasi format surat, proposal, serta LPK yang berlaku di Polines.'],
+            ['kementerian' => 'Keuangan', 'nama' => 'Penaungan ', 'pelaksanaan' => 'Dua Kali dalam Satu Periode', 'deskripsi' => 'Pembinaan, pendampingan, serta pengawasan terhadap ormawa.'],
+            ['kementerian' => 'Keuangan', 'nama' => 'Koreksian ', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'Kegiatan pembetulan/perbaikan/kesalahan tulis proposal dan lpk ormawa.'],
+            ['kementerian' => 'Keuangan', 'nama' => 'Rekapan', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'Kegiatan penyusunan kembali data proposal dan lpk ormawa.'],
+            ['kementerian' => 'Keuangan', 'nama' => 'Pencairan', 'pelaksanaan' => 'Sampai semua proker ormawa selesai', 'deskripsi' => 'Penyaluran danor dari bpm melalui keu ke ormawa.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Srudi Banding', 'pelaksanaan' => 'Minimal 2 Kali', 'deskripsi' => 'Pertemuan antar organisasi BEM dari berbagai perguruan tinggi untuk bertukar informasi.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Externity', 'pelaksanaan' => '1x dalam satu periode', 'deskripsi' => 'Forum yang mempertemukan Kementerian Luar Negeri BEM Semarang Raya.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Penaungan FKMPI', 'pelaksanaan' => '4x dalam satu periode', 'deskripsi' => 'Sebagai penaung TIM FKMPI kampus Kementerian Luar Negeri melakukan koordinasi.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Forum Lingkar Humas', 'pelaksanaan' => '4x dalam satu periode', 'deskripsi' => 'Forum untuk para humas ormawa guna menjalin hubungan baik.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Penaungan ORDA', 'pelaksanaan' => '4x dalam satu periode', 'deskripsi' => 'Wadah diskusi dan mempererat peran ORDA sebagai representasi kampus.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'ORDA Expo', 'pelaksanaan' => '1 Kali dalam 1 periode', 'deskripsi' => 'Memperkenalkan ORDA yang ada di Polines kepada mahasiswa baru.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'ORDA Awards', 'pelaksanaan' => '1 Kali dalam 1 periode', 'deskripsi' => 'Acara penghargaan untuk para organisasi daerah yang ada di Polines.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Kunjungan Eksternal', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Pertemuan antar Kementerian Luar Negeri BEM dari berbagai perguruan tinggi.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Explorasa', 'pelaksanaan' => '1 Kali dalam 1 periode', 'deskripsi' => 'Agenda kunjungan dengan Non-Goverment Organization (NGO) ataupun dengan Stakeholder.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Pertemuan EGM', 'pelaksanaan' => '3x dalam satu periode', 'deskripsi' => 'Pertemuan dengan Ekstra Gerakan Mahasiswa.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Agenda BEM SI/SERA', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Kegiatan pendelegasian dalam acara atau forum BEM SI & Semarang Raya.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Lugri Talks', 'pelaksanaan' => '2x dalam satu periode', 'deskripsi' => 'Podcast dari Kementerian Luar Negeri untuk menambah wawasan mahasiswa.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Get Closer with Polines', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Konten kreatif TikTok/Instagram yang bertujuan untuk branding Polines.'],
+            ['kementerian' => 'Luar Negeri', 'nama' => 'Sosialisasi SPMB', 'pelaksanaan' => '26 Januari 2026', 'deskripsi' => 'Sosialisasi pembekalan terkait dengan SPMB oleh tim promosi.'],
+        ];
+
+        foreach ($agendas as $data) {
+            $kementerian = $kementerians[$data['kementerian']] ?? null;
+            if ($kementerian) {
+                Agenda::create([
+                    'kementerian_id' => $kementerian->id,
+                    'nama_agenda' => $data['nama'],
+                    'pelaksanaan_agenda' => $data['pelaksanaan'],
+                    'deskripsi_agenda' => $data['deskripsi'],
+                ]);
+            }
+        }
+    }
+}

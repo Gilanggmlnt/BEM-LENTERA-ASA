@@ -36,7 +36,7 @@ class KementerianController extends Controller
         // The keys in ministryNameMapping should match the slugs, not the raw converted ministryName
         $fullMinistryName = $ministryNameMapping[$slug] ?? ucwords(str_replace('-', ' ', $slug));
 
-        $kementerian = Kementerian::where('nama_kementerian', $fullMinistryName)->first();
+        $kementerian = Kementerian::with(['prokers', 'agendas'])->where('nama_kementerian', $fullMinistryName)->first();
 
         if (!$kementerian) {
             abort(404); // Ministry not found

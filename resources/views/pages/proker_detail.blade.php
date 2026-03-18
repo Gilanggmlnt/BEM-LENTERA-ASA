@@ -105,7 +105,7 @@ nav.is-sticky {
                             <div>
                                 <h4 class="font-bold text-dark leading-tight">{{ $proker->nama_ketuplak }}</h4>
                                 <p class="text-sm text-primary">
-                                    {{ $ketuplak ? $ketuplak->jabatan->nama_jabatan : 'Ketua Panitia' }}
+                                    {{ $ketuplak ? $ketuplak->jabatan->nama_jabatan : 'Ketua Pelaksana' }}
                                 </p>
                             </div>
                         </div>

@@ -15,4 +15,9 @@ class Kementerian extends Model
     {
         return $this->hasMany(Proker::class);
     }
+
+    public function agendas()
+    {
+        return $this->hasMany(Agenda::class);
+    }
 }

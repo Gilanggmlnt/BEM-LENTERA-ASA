@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Kabinet Lentera Asa</title>
     
+    {{-- Social Media Previews --}}
+    @stack('meta')
+    
     {{-- Temporary fallback to CDN --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
