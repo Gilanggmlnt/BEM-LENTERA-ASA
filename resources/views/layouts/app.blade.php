@@ -32,6 +32,10 @@
     {{-- Lucide Icons (using jsdelivr UMD build for better compatibility) --}}
     <script src="https://cdn.jsdelivr.net/npm/lucide/dist/umd/lucide.min.js"></script>
 
+    {{-- GSAP --}}
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
     {{-- Local assets --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

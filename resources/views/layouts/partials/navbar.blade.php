@@ -239,5 +239,19 @@
         if (mobileMenuButton) {
             mobileMenuButton.addEventListener('click', toggleMenu);
         }
+
+        // --- 6. GSAP STICKY NAVBAR ---
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            const navbar = document.getElementById("navbar");
+            if (navbar) {
+                gsap.set(navbar, { position: "absolute", top: "1.5rem", y: 0 });
+                ScrollTrigger.create({
+                    start: 100,
+                    onEnter: () => gsap.to(navbar, { position: "fixed", top: "1rem", duration: 0.3, ease: "power2.out" }),
+                    onLeaveBack: () => gsap.to(navbar, { position: "absolute", top: "1.5rem", duration: 0.3, ease: "power2.out" })
+                });
+            }
+        }
     });
 </script>

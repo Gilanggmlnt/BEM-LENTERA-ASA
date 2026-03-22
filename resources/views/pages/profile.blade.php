@@ -536,15 +536,11 @@ nav.is-sticky {
 
 
 {{-- SCRIPT --}}
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
-
-        gsap.registerPlugin(ScrollTrigger);
 
         // 0. Hero Section Animation
         gsap.set("#hero-subtitle", { opacity: 0, y: 30 });
@@ -559,17 +555,6 @@ nav.is-sticky {
               .to("#hero-period", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
               .to("#hero-quote", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
               .to("#hero-line", { opacity: 1, width: "80px", duration: 0.8 }, "-=0.4");
-
-        // 1. Animasi Navbar
-        const navbar = document.querySelector("nav");
-        if (navbar) {
-            gsap.set(navbar, { position: "absolute", top: "1.5rem", y: 0 });
-            ScrollTrigger.create({
-                start: 100,
-                onEnter: () => gsap.to(navbar, { position: "fixed", top: "1rem", y: 0, duration: 0.3, ease: "power2.out" }),
-                onLeaveBack: () => gsap.to(navbar, { position: "absolute", top: "2.5rem", y: 0, duration: 0.3, ease: "power2.out" })
-            });
-        }
 
         // 2. Animasi Tentang BEM
         gsap.fromTo("#tentang-logo", { opacity: 0, x: -50 }, {

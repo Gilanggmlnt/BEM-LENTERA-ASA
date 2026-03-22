@@ -7,7 +7,7 @@
         {{-- Page Header --}}
         <div class="mb-16">
             <h1 class="text-4xl md:text-6xl font-bold text-dark mb-4">
-                Berita <span class="text-primary">Lengkap</span>
+                Berita & <span class="text-primary">Kabar</span>
             </h1>
             <p class="text-gray-500 max-w-2xl text-sm md:text-base">
                 Kumpulan informasi, artikel, dan dokumentasi seluruh kegiatan Badan Eksekutif Mahasiswa KBM Politeknik Negeri Semarang.

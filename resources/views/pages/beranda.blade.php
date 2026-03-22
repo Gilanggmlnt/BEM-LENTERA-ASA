@@ -671,8 +671,6 @@ nav.is-sticky {
 </section>
 
 {{-- ================= SCRIPT ================= --}}
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -680,9 +678,6 @@ nav.is-sticky {
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
-
-        // Register GSAP Plugins
-        gsap.registerPlugin(ScrollTrigger);
 
         // --- CALENDAR LOGIC ---
         const allProkers = @json($allProkers);
@@ -865,16 +860,6 @@ nav.is-sticky {
             opacity: 1, y: 0, duration: 1,
             scrollTrigger: { trigger: "#filosofi-logo", start: "top top+=80", end: "bottom top", scrub: true }
         });
-
-        const navbar = document.querySelector("nav");
-        if (navbar) {
-            gsap.set(navbar, { position: "absolute", top: "1.5rem", y: 0 });
-            ScrollTrigger.create({
-                start: 100,
-                onEnter: () => gsap.to(navbar, { position: "fixed", top: "1rem", duration: 0.3, ease: "power2.out" }),
-                onLeaveBack: () => gsap.to(navbar, { position: "absolute", top: "1.5rem", duration: 0.3, ease: "power2.out" })
-            });
-        }
     });
 </script>
 
