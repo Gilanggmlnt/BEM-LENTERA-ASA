@@ -113,8 +113,6 @@ class AgendaSeeder extends Seeder
             ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Kesma Care', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Mahasiswa/i dapat memilih untuk menghubungi melalui media Whatsapp Bersifat anonim.'],
             ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'Infopedia', 'pelaksanaan' => '2 minggu sekali / Sebulan 2 Kali', 'deskripsi' => 'Memberikan informasi internal kampus, eksternal kampus, penting, dan tips.'],
             ['kementerian' => 'Advokasi dan Kesejahteraan Mahasiswa', 'nama' => 'PODKESMA', 'pelaksanaan' => '1 Kali ', 'deskripsi' => 'Memberikan informasi menarik, penting, dan isu-isu dari jajaran petinggi polines.'],
-            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Diskusi Lingkungan x Aksi Tanam Mangrove', 'pelaksanaan' => '07 & 14 Desember 2025', 'deskripsi' => 'Seminar terkait kelestarian lingkungan pesisir yang dilanjutkan dengan Aksi Tanam Mangrove.'],
-            ['kementerian' => 'Lingkungan Hidup', 'nama' => 'World Cleanup Day', 'pelaksanaan' => '20-Sep-25', 'deskripsi' => 'Aksi kegiatan bersih-bersih dalam rangka memperingati Hari Bersih-Bersih Sedunia.'],
             ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Tanam Pohon X Desamitra', 'pelaksanaan' => '24 Januari 2026', 'deskripsi' => 'Kolaborasi Kementerian Lingkungan Hidup dan Kementerian Sosial Masyarakat dalam mendukung penghijauan.'],
             ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Free Jumat Plastik', 'pelaksanaan' => 'Setiap Jumat', 'deskripsi' => 'Berfokus pada pengurangan penggunaan sampah plastik sekali pakai di kantor BEM dan BPM.'],
             ['kementerian' => 'Lingkungan Hidup', 'nama' => 'Program bank sampah POLINES', 'pelaksanaan' => 'sosil 5-10-2025 & 1 periode penyetoran', 'deskripsi' => 'Kegiatan pengelolaan sampah yang bertujuan mengurangi limbah.'],
@@ -149,7 +147,16 @@ class AgendaSeeder extends Seeder
             ['kementerian' => 'Luar Negeri', 'nama' => 'Lugri Talks', 'pelaksanaan' => '2x dalam satu periode', 'deskripsi' => 'Podcast dari Kementerian Luar Negeri untuk menambah wawasan mahasiswa.'],
             ['kementerian' => 'Luar Negeri', 'nama' => 'Get Closer with Polines', 'pelaksanaan' => 'Kondisional', 'deskripsi' => 'Konten kreatif TikTok/Instagram yang bertujuan untuk branding Polines.'],
             ['kementerian' => 'Luar Negeri', 'nama' => 'Sosialisasi SPMB', 'pelaksanaan' => '26 Januari 2026', 'deskripsi' => 'Sosialisasi pembekalan terkait dengan SPMB oleh tim promosi.'],
-        ];
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Penaungan', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Melakukan penaungan dan koordinasi dengan pihak terkait bidang ekonomi kreatif.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Diskusi ekonomi', 'pelaksanaan' => '25 Oktober 2025', 'deskripsi' => 'Kegiatan diskusi mengenai perkembangan dan isu ekonomi terkini.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Riset Promosi', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Melakukan riset terkait strategi promosi yang efektif.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Partnership', 'pelaksanaan' => '6 Kali', 'deskripsi' => 'Menjalin kerjasama dengan mitra eksternal untuk mendukung program kerja.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Media Partner', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Menjalin kerjasama dengan media untuk publikasi kegiatan.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Merchandise (jakab,rompi staffmud, pin, nametag)', 'pelaksanaan' => '2 Kali', 'deskripsi' => 'Pengadaan atribut dan merchandise kabinet.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Worksheet', 'pelaksanaan' => '3 Kali', 'deskripsi' => 'Penyusunan lembar kerja untuk monitoring dan evaluasi.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Sosialisasi PMW', 'pelaksanaan' => '1 Kali', 'deskripsi' => 'Sosialisasi Program Mahasiswa Wirausaha kepada mahasiswa Polines.'],
+            ['kementerian' => 'Ekonomi Kreatif', 'nama' => 'Lensafest', 'pelaksanaan' => '1 Kali', 'deskripsi' => 'Penyelenggaraan festival ekonomi kreatif sebagai wadah apresiasi.'],
+            ];
 
         foreach ($agendas as $data) {
             $kementerian = $kementerians[$data['kementerian']] ?? null;

@@ -38,6 +38,24 @@ nav.is-sticky {
                     @php
                         $imageFilename = $slug . '.png'; 
                         $logoImagePath = 'images/logo_kementerian/' . $imageFilename;
+
+                        $igHandles = [
+                            'kesekretariatan' => 'ksknkeu.bempolines',
+                            'keuangan' => 'ksknkeu.bempolines',
+                            'komunikasi-dan-informasi' => 'kominfo.bempollines',
+                            'dalam-negeri' => 'kemendagri.bempolines',
+                            'psdm' => 'psdm_bempolines',
+                            'agama' => 'kemenag.bempolines',
+                            'advokasi-dan-kesejahteraan-mahasiswa' => 'kesma.bempolines',
+                            'minat-dan-bakat' => 'minbak.bempolines',
+                            'riset-dan-keilmuan' => 'riskel.bempolines',
+                            'ekonomi-kreatif' => 'ekraf.bempolines',
+                            'sosial-masyarakat' => 'sosmas.bempolines',
+                            'lingkungan-hidup' => 'lh.bempolines',
+                            'sosial-politik' => 'sospol.bempolines',
+                            'luar-negeri' => 'lugri.bempolines',
+                        ];
+                        $currentIg = $igHandles[$slug] ?? null;
                     @endphp
                     <div class="w-24 h-24 bg-white p-2 rounded-2xl flex items-center justify-center text-5xl font-bold text-dark overflow-hidden">
                         @if(file_exists(public_path($logoImagePath)))
@@ -60,22 +78,31 @@ nav.is-sticky {
                             </div>
                         @endif
                     </div>
-                    <div class="text-center md:text-left">
+                    <div class="text-center md:text-left flex-1">
                         @if($minister)
-                        <p class="text-primary text-sm mb-1">Kementerian</p>
-                        <h1 class="text-3xl font-bold mb-2">
-                            {{ $kementerian->nama_kementerian }}
-                        </h1>
-                        <p class="">
-                            Badan Eksekutif Mahasiswa Politeknik Negeri Semarang Kabinet Lentera Asa
-                        </p>
+                            <p class="text-primary text-sm mb-1">Kementerian</p>
+                            <h1 class="text-3xl font-bold mb-2">
+                                {{ $kementerian->nama_kementerian }}
+                            </h1>
+                            <p class="text-white/80">
+                                Badan Eksekutif Mahasiswa Politeknik Negeri Semarang Kabinet Lentera Asa
+                            </p>
                         @else
-                        <h1 class="text-3xl font-bold mb-2">
-                            {{ $kementerian->nama_kementerian }}
-                        </h1>
-                        <p class="">
-                            Tidak ada Menteri yang ditunjuk.
-                        </p>
+                            <h1 class="text-3xl font-bold mb-2">
+                                {{ $kementerian->nama_kementerian }}
+                            </h1>
+                            <p class="text-white/60 text-sm italic">
+                                Menteri belum ditunjuk atau data tidak tersedia.
+                            </p>
+                        @endif
+
+                        @if($currentIg)
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-4">
+                            <a href="https://instagram.com/{{ $currentIg }}" target="_blank" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full border border-white/10 transition-all group">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram text-primary group-hover:scale-110 transition-transform"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                                <span class="text-sm font-medium">@ {{ $currentIg }}</span>
+                            </a>
+                        </div>
                         @endif
                     </div>
                 </div>

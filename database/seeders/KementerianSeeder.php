@@ -17,7 +17,8 @@ class KementerianSeeder extends Seeder
             'Kesekretariatan','Keuangan','Komunikasi dan Informasi','Dalam Negeri',
             'Pengembangan Sumber Daya Mahasiswa','Agama','Advokasi dan Kesejahteraan Mahasiswa',
             'Minat dan Bakat','Riset dan Keilmuan','Ekonomi Kreatif','Sosial Masyarakat',
-            'Lingkungan Hidup','Sosial Politik','Luar Negeri'
+            'Lingkungan Hidup','Sosial Politik','Luar Negeri',
+            'Dewan Pimpinan','BEM KBM POLINES'
         ];
 
         foreach ($kementerianList as $nama) {

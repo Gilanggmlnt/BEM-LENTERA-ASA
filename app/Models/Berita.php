@@ -11,7 +11,7 @@ class Berita extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'category', 'image', 'excerpt', 'description', 'date'
+        'title', 'slug', 'category', 'image', 'excerpt', 'description', 'date', 'link'
     ];
 
     protected $casts = [

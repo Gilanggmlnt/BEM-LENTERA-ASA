@@ -133,9 +133,36 @@ class ProkerSeeder extends Seeder
                 'nama_proker' => 'Nyala Dialektika',
                 'nama_ketuplak' => 'Ovi Permata Wulandari',
                 'deskripsi_proker' => 'Nyala dialektika merupakan program kerja yang berisi tentang seminar and panggung rakyat mengenai isu ketenagakerjaan pada saat ini',
-                'pamflet' => '/images/flyer_proker/nyala_dialektika.png',
+                'pamflet' => 'images/flyer_proker/nyala_dialektika.png',
                 'tanggal_pelaksanaan' => '2026-05-08',
-                'dokumentasi' => '/images/foto_proker/nyala_dialektika_1.png, /images/foto_proker/nyala_dialektika_2.png, /images/foto_proker/nyala_dialektika_3.png'
+                'dokumentasi' => 'images/foto_proker/nyala_dialektika_1.png, images/foto_proker/nyala_dialektika_2.png, images/foto_proker/nyala_dialektika_3.png'
+            ],
+            [
+                'kementerian' => 'BEM KBM POLINES',
+                'nama_proker' => 'Lentera Asa Festival',
+                'nama_ketuplak' => 'Hafiidh Ahmad Imam Saputra',
+                'deskripsi_proker' => 'Lentera Asa Festival 2026 merupakan kolaborasi strategis antara Kementerian Advokesma, Luar Negeri, Minat dan Bakat dan Ekonomi Kreatif yang dirancang sebagai malam apresiasi bagi seluruh mahasiswa. Kegiatan ini menjadi ruang untuk merayakan pencapaian serta kreativitas mahasiswa dalam suasana yang penuh kehangatan dan inspirasi. Melalui festival ini, diharapkan tercipta sinergi yang lebih kuat serta semangat baru bagi mahasiswa untuk terus berkarya di masa depan.',
+                'pamflet' => 'images/flyer_proker/lentera_asa_festival.png',
+                'tanggal_pelaksanaan' => '2026-04-25',
+                'dokumentasi' => 'images/foto_proker/lentera_asa_festival_1.png, images/foto_proker/lentera_asa_festival_2.png, images/foto_proker/lentera_asa_festival_3.png'
+            ],
+            [
+                'kementerian' => 'Dewan Pimpinan',
+                'nama_proker' => 'Upgrading',
+                'nama_ketuplak' => 'Auliya Putra',
+                'deskripsi_proker' => 'Kegiatan untuk meningkatkan mutu, pengetahuan, ilmu regenerasi, dan menumbuhkan kembali semangat berorganisasi serta mengenalkan dan mempererat satu sama lain antar fungsionaris. Selain itu, kegiatan ini juga dapat meningkatkan kualitas dan kapabilitas para fungsionaris dalam memahami perannya sebagai bagian dari organisasi yang memiliki dinamika secara normatif.',
+                'pamflet' => 'images/flyer_proker/upgrading.png',
+                'tanggal_pelaksanaan' => '2025-09-07',
+                'dokumentasi' => 'images/foto_proker/upgrading_1.png, images/foto_proker/upgrading_2.png, images/foto_proker/upgrading_3.png'
+            ],
+            [
+                'kementerian' => 'BEM KBM POLINES',
+                'nama_proker' => 'Musyawarah Nasional BEM SI XIX',
+                'nama_ketuplak' => 'Belum Ditentukan',
+                'deskripsi_proker' => 'MUNAS BEM SI XIX merupakan forum musyawarah tertinggi mahasiswa nasional yang diselenggarakan di Politeknik Negeri Semarang sebagai sarana strategis untuk memperkuat sinergi dalam merespons berbagai isu nasional. Agenda utama kegiatan ini adalah pengambilan keputusan kolektif yang meliputi perumusan arah gerak, penyusunan rekomendasi kebijakan, serta penetapan struktur kepemimpinan aliansi periode mendatang. Melalui pelaksanaan sidang ini, mahasiswa mempertegas komitmennya terhadap nilai demokrasi dan keadilan sekaligus memperkuat perannya sebagai mitra-poros pembangunan bangsa Indonesia.',
+                'pamflet' => 'images/flyer_proker/munas_bem_si_xix.png',
+                'tanggal_pelaksanaan' => '2026-06-22',
+                'dokumentasi' => 'images/foto_proker/munas_bem_si_xix_1.png, images/foto_proker/munas_bem_si_xix_2.png, images/foto_proker/munas_bem_si_xix_3.png'
             ],
         ];
 

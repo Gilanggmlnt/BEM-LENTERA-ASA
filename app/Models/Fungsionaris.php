@@ -21,4 +21,9 @@ class Fungsionaris extends Model
     {
         return $this->belongsTo(Jabatan::class);
     }
+
+    public function kementerian(): BelongsTo
+    {
+        return $this->belongsTo(Kementerian::class);
+    }
 }

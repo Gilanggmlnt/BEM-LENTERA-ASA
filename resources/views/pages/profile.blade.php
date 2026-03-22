@@ -29,8 +29,64 @@ nav.is-sticky {
 </style>
 
 <div class="w-full min-h-screen bg-[#F9F9F9] text-dark">
+    {{-- WELCOME SECTION --}}
+    <section id="hero" class="relative w-full h-[75vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
+
+        <!-- Background -->
+        <div class="absolute inset-0">
+            <img src="{{ asset('images/PEN01709.JPG.jpeg') }}" 
+                class="w-full h-full object-cover object-center" />
+            
+            <!-- Elegant overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+
+            <!-- Subtitle -->
+            <p id="hero-subtitle" 
+            class="text-[#FFC900] text-xs md:text-sm tracking-[0.4em] uppercase mb-10 opacity-0 inline-block backdrop-blur-md bg-white/5 border border-white/10 px-4 py-1 rounded-2xl">
+                Selamat Datang di BEM KBM Polines
+            </p>
+
+            <!-- Title -->
+            <h1 id="hero-title" 
+                class="text-white text-4xl md:text-6xl lg:text-7xl leading-tight font-light mb-4 opacity-0">
+
+                <span class="block">
+                    <span class="font-tempting text-5xl md:text-7xl lg:text-8xl">K</span>abinet
+                </span>
+
+                <span class="block mt-1">
+                    <span class="font-tempting text-5xl md:text-7xl lg:text-8xl">L</span>entera
+                    <span class="font-tempting text-5xl md:text-7xl lg:text-8xl ml-2">A</span>sa
+                </span>
+            </h1>
+
+            <!-- Glass Card (modern touch) -->
+            <div class="inline-block backdrop-blur-md bg-white/5 border border-white/10 px-4 py-1 rounded-2xl opacity-0" id="hero-period">
+                <p class="text-white text-lg md:text-xl font-medium tracking-wide">
+                    2025 / 2026
+                </p>
+            </div>
+
+            <!-- Quote -->
+            <p id="hero-quote" 
+            class="text-[#FFC900]/90 italic text-sm md:text-base mt-6 mb-2 opacity-0">
+                “Nyalakan Lentera, Menyulam Asa”
+            </p>
+
+            <!-- Divider -->
+            <div id="hero-line" 
+                class="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#FFC900] to-transparent mx-auto opacity-0">
+            </div>
+
+        </div>
+    </section>
+
     {{-- TENTANG BEM --}}
-    <section id="tentang-bem" class="pt-48 pb-32 px-4 sm:px-8 max-w-7xl mx-auto mb-32 overflow-hidden">
+    <section id="tentang-bem" class="py-32 px-4 sm:px-8 max-w-7xl mx-auto mb-32 overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-20 items-center">
             <div id="tentang-logo" class="md:col-span-1 flex justify-center">
                 <img src="{{ asset('images/logobemkbmpolines.png') }}" alt="Logo BEM KBM Polines" class="w-48 h-auto md:w-full md:h-auto">
@@ -56,26 +112,31 @@ nav.is-sticky {
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
                             {{-- Card Total Fungsionaris --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">{{ $totalFungsionaris }}</div>
                         <p class="text-dark-light text-lg">Fungsionaris</p>
-                    <div class="text-3xl font-bold mb-2">144</div>
                     </div>
-                            {{-- Card Total Program Kerja --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center">
-                        <p class="text-dark-light text-lg">Program Kerja</p>
-                        <div class="text-3xl font-bold mb-2">{{ $totalProker }}</div>
-                    </div>
-                            {{-- Card Periode --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center">
-                        <p class="text-dark-light text-lg">Periode</p>
-                    <div class="text-3xl font-bold mb-2">{{ $periode }}</div>
+                            {{-- Card Total Staff Muda --}}
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">{{ $totalStaffMuda }}</div>
+                        <p class="text-dark-light text-lg">Staff Muda</p>
                 </div>
+                            {{-- Card Total Program Kerja --}}
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">{{ $totalProker }}</div>
+                        <p class="text-dark-light text-lg">Program Kerja</p>
+                    </div>
+                            {{-- Card Total Agenda --}}
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">{{ $totalAgenda }}</div>
+                        <p class="text-dark-light text-lg">Agenda</p>
+                    </div>
                             {{-- Card Total Kementerian --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">{{ $totalKementerian }}</div>
                         <p class="text-dark-light text-lg">Kementerian</p>
-                    <div class="text-3xl font-bold mb-2">{{ $totalKementerian }}</div>
                 </div>
             </div>
     </section>
@@ -480,6 +541,20 @@ nav.is-sticky {
         }
 
         gsap.registerPlugin(ScrollTrigger);
+
+        // 0. Hero Section Animation
+        gsap.set("#hero-subtitle", { opacity: 0, y: 30 });
+        gsap.set("#hero-title", { opacity: 0, y: 30 });
+        gsap.set("#hero-period", { opacity: 0, y: 20 });
+        gsap.set("#hero-quote", { opacity: 0, y: 20 });
+        gsap.set("#hero-line", { opacity: 0, width: 0 });
+
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl.to("#hero-subtitle", { opacity: 1, y: 0, duration: 1, delay: 0.5 })
+              .to("#hero-title", { opacity: 1, y: 0, duration: 1 }, "-=0.7")
+              .to("#hero-period", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+              .to("#hero-quote", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+              .to("#hero-line", { opacity: 1, width: "80px", duration: 0.8 }, "-=0.4");
 
         // 1. Animasi Navbar
         const navbar = document.querySelector("nav");

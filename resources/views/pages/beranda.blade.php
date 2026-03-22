@@ -50,13 +50,41 @@ nav.is-sticky {
     }
 }
 
+/* FLIP CARD STYLES */
+.flip-card {
+    perspective: 1000px;
+    background-color: transparent;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.5rem;
+}
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
 
 </style>
 
 <div class="w-full min-h-screen bg-[#F9F9F9] text-dark overflow-hidden">
 
     {{-- ================= HERO ================= --}}
-    <section class="relative min-h-screen flex items-center justify-center px-4 pt-4">
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-4 pt-4">
 
         {{-- Dekorasi --}}
         <div class="absolute top-0 left-0 w-64 h-64 bg-primary opacity-20 blur-3xl"></div>
@@ -308,7 +336,9 @@ nav.is-sticky {
                     {{-- Logo Kementerian --}}
                     <div class="flex justify-center mb-4">
                         <div class="w-14 h-14 p-2 rounded-full bg-white shadow-md flex items-center justify-center -mt-12 overflow-hidden border-2 border-primary/20 p-1">
-                            @if(file_exists(public_path($logoPath)))
+                            @if($proker->kementerian->nama_kementerian == 'BEM KBM POLINES')
+                                <img src="{{ asset('images/logolensa.png') }}" class="w-full h-full object-contain">
+                            @elseif(file_exists(public_path($logoPath)))
                                 <img src="{{ asset($logoPath) }}" class="w-full h-full object-contain">
                             @else
                                 <div class="w-full h-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
@@ -469,6 +499,77 @@ nav.is-sticky {
     </div>
 </section>
 
+{{-- ================= SALURAN (CHANNELS) ================= --}}
+<section id="saluran" class="py-28 px-4 bg-[#F3F4F6]">
+    <div class="max-w-7xl mx-auto">
+        {{-- Title --}}
+        <div class="text-center mb-16 saluran-header opacity-0">
+            <h2 class="text-3xl md:text-5xl font-bold text-dark mb-4">
+                Gabung Ke <span class="text-primary">Saluran</span>
+            </h2>
+            <p class="text-gray-500 max-w-xl mx-auto text-sm md:text-base">
+                Dapatkan informasi tercepat dan terpercaya langsung melalui kanal komunikasi resmi kami.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            @php
+                $channels = [
+                    [
+                        'title' => 'BEM Polines',
+                        'description' => 'Akun Resmi BEM KBM Polines untuk Informasi Terbaru Seputar Kegiatan dan Program Kerja.',
+                        'link' => 'https://whatsapp.com/channel/0029VayYLfKEAKWJTrZ6vn0q',
+                        'qr' => 'Channel BEM POLINES.png'
+                    ],
+                    [
+                        'title' => 'Info Beasiswa & Lomba',
+                        'description' => 'Informasi Beasiswa dan Lomba Terbaru untuk Mahasiswa Politeknik Negeri Semarang.',
+                        'link' => 'https://whatsapp.com/channel/0029Vajovk95Ui2bXYB9ET16',
+                        'qr' => 'CHANNEL INFO BEASISWA & LOMBA.png'
+                    ],
+                    [
+                        'title' => 'Polines Career Center',
+                        'description' => 'Pusat Informasi Karir dan Lowongan Kerja untuk Alumni dan Mahasiswa Polines.',
+                        'link' => 'https://whatsapp.com/channel/0029VaYuQKCJZg49k6upNj3I',
+                        'qr' => 'CHANNEL POLINES CAREER CENTER.png'
+                    ]
+                ];
+            @endphp
+
+            @foreach($channels as $index => $channel)
+            <div class="flip-card h-80 saluran-card opacity-0 translate-y-8">
+                <div class="flip-card-inner">
+                    {{-- Front Face --}}
+                    <div class="flip-card-front bg-white border border-gray-100 p-8 flex flex-col items-center justify-center shadow-sm">
+                        <div class="w-16 h-16 mb-6 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center ring-4 ring-primary/10">
+                            <img src="{{ asset('images/logolensa.png') }}" alt="Logo" class="w-10 h-10 object-contain">
+                        </div>
+                        <h3 class="font-bold text-xl text-dark mb-3">{{ $channel['title'] }}</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-6">
+                            {{ $channel['description'] }}
+                        </p>
+                        <a href="{{ $channel['link'] }}" 
+                           target="_blank"
+                           class="bg-gradient-to-r from-primary to-secondary text-dark px-8 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">
+                            Gabung Sekarang
+                        </a>
+                    </div>
+
+                    {{-- Back Face --}}
+                    <div class="flip-card-back bg-dark text-white p-8 flex flex-col items-center justify-center border-2 border-primary">
+                        <h3 class="font-bold text-lg mb-6 text-primary">{{ $channel['title'] }}</h3>
+                        <div class="w-32 h-32 bg-white rounded-2xl p-2 mb-6 flex items-center justify-center overflow-hidden">
+                            <img src="{{ asset('images/qr_saluran/' . $channel['qr']) }}" alt="QR {{ $channel['title'] }}" class="w-full h-full object-contain">
+                        </div>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Scan atau klik Gabung Sekarang</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 {{-- ================= BERITA TERKINI ================= --}}
 <section id="berita" class="py-28 px-4 bg-[#F9F9F9]">
     <div class="max-w-7xl mx-auto">
@@ -484,7 +585,7 @@ nav.is-sticky {
 
         @if($newsItems->count() > 0)
         {{-- News Grid --}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {{-- Featured News --}}
             @php $firstNews = $newsItems[0]; @endphp
             <div class="md:col-span-2 news-card opacity-0 translate-y-8">
@@ -549,6 +650,15 @@ nav.is-sticky {
                 </div>
                 @endforelse
             </div>
+        </div>
+
+        {{-- See All Button --}}
+        <div class="flex justify-center news-header opacity-0">
+            <a href="{{ route('berita.index') }}" 
+               class="inline-flex items-center gap-3 px-8 py-4 bg-white border border-gray-200 text-dark font-bold rounded-2xl hover:bg-dark hover:text-white hover:border-dark transition-all shadow-sm">
+                Lihat Berita Lainnya
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
         </div>
         @else
         <div class="bg-white rounded-3xl border border-dashed border-gray-300 p-16 text-center shadow-sm opacity-60">
@@ -709,6 +819,17 @@ nav.is-sticky {
 
         gsap.to(".news-card-side", {
             scrollTrigger: { trigger: "#berita", start: "top 70%" },
+            opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+        });
+
+        // --- SALURAN ANIMATIONS ---
+        gsap.to(".saluran-header", {
+            scrollTrigger: { trigger: "#saluran", start: "top 80%" },
+            opacity: 1, y: 0, duration: 1, ease: "power3.out"
+        });
+
+        gsap.to(".saluran-card", {
+            scrollTrigger: { trigger: "#saluran", start: "top 70%" },
             opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out"
         });
 

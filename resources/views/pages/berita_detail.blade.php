@@ -73,10 +73,21 @@ nav.is-sticky {
             <p class="whitespace-pre-line">{{ $berita->description }}</p>
         </div>
 
+        {{-- Source Link --}}
+        @if($berita->link)
+        <div class="mt-8">
+            <a href="{{ $berita->link }}" target="_blank" 
+               class="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/20 rounded-2xl font-bold hover:bg-primary hover:text-dark transition-all shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Kunjungi Tautan
+            </a>
+        </div>
+        @endif
+
         {{-- Share or Footer --}}
         <div class="mt-16 pt-8 border-t border-gray-200">
             <p class="text-sm text-gray-400 italic mb-4">Bagikan berita ini:</p>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 mb-16">
                 {{-- Instagram Story (Uses Web Share API) --}}
                 <button onclick="shareToSocial('instagram')" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 hover:text-pink-600 hover:border-pink-600 transition-all shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -100,6 +111,38 @@ nav.is-sticky {
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                     <span class="text-sm font-medium">Salin Tautan</span>
                 </button>
+            </div>
+
+            {{-- Other News Preview --}}
+            @if($otherNews->count() > 0)
+            <div class="mt-16">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-dark">Berita Lainnya</h2>
+                    <a href="{{ route('berita.index') }}" class="text-primary font-bold text-sm hover:underline">Lihat Semua</a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    @foreach($otherNews as $news)
+                    <a href="{{ route('berita.show', $news->slug) }}" class="group block">
+                        <div class="aspect-video rounded-2xl overflow-hidden mb-4 shadow-sm">
+                            <img src="{{ asset('images/berita/' . $news->image) }}" alt="{{ $news->title }}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-bold text-dark text-sm group-hover:text-primary transition-colors line-clamp-2">
+                            {{ $news->title }}
+                        </h3>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
+            {{-- Big See More Button --}}
+            <div class="mt-16 flex justify-center">
+                <a href="{{ route('berita.index') }}" 
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-dark text-white font-bold rounded-2xl hover:bg-primary hover:text-dark transition-all shadow-lg">
+                    Lihat Berita Lainnya
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </div>
