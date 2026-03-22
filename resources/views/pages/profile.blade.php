@@ -198,12 +198,16 @@ nav.is-sticky {
     {{-- STRUKTUR KABINET --}}
     <section class="py-24 overflow-x-auto bg-slate-50" id="struktur-kabinet">
         <div class="max-w-7xl mx-auto">
-            <div id="struktur-kabinet-title" class="flex items-center gap-3 p-4 mb-12">
+            <div id="struktur-kabinet-title" class="flex items-center gap-3 p-4 mb-2">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
                     Struktur Kabinet
                 </h2>
                 <span class=" text-4xl">↗</span>
             </div>
+            <div class="mt-2 w-fit mx-auto inline-flex items-center gap-2 bg-gray/10 px-4 py-2 rounded-full text-xs md:text-sm font-medium border border-primary/20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Klik pada kementerian untuk melihat detail anggota dan program kerja</span>
+        </div>
         <div class="min-w-[2400px] flex flex-col items-center font-sans pb-40">
 
             <style>
@@ -650,4 +654,67 @@ nav.is-sticky {
     });
 </script>
 
+    {{-- ================= FORM KRITIK & SARAN ================= --}}
+    <section id="aspirasi" class="py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Suara Mahasiswa</h2>
+                    <p class="text-gray-500">Punya kritik, saran, atau aspirasi untuk BEM KBM Polines? Sampaikan di sini secara anonim maupun terbuka.</p>
+                </div>
+
+                @if(session('success'))
+                    <div class="mb-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-2xl flex items-center gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3">
+                        <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('aspirasi.store') }}" method="POST" class="bg-[#F9F9F9] p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm">
+                    @csrf
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-dark ml-1">Nama Pengirim (Opsional)</label>
+                            <input type="text" name="nama_pengirim" placeholder="Masukkan nama atau kosongkan untuk anonim" 
+                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-dark ml-1">Email (Opsional)</label>
+                            <input type="email" name="email_pengirim" placeholder="email@contoh.com" 
+                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 mb-6">
+                        <label class="text-sm font-semibold text-dark ml-1">Kategori</label>
+                        <select name="kategori" required 
+                            class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none appearance-none bg-white">
+                            <option value="Kritik">Kritik</option>
+                            <option value="Saran">Saran</option>
+                            <option value="Aspirasi">Aspirasi Umum</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2 mb-8">
+                        <label class="text-sm font-semibold text-dark ml-1">Pesan Aspirasi</label>
+                        <textarea name="pesan" rows="5" required placeholder="Tuliskan kritik, saran, atau aspirasi Anda di sini..." 
+                            class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-dark text-white hover:bg-primary hover:text-dark font-bold py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 group">
+                        Kirim Aspirasi
+                        <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 @endsection
+

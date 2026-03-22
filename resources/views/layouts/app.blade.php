@@ -38,6 +38,7 @@
 <body class="bg-[#F9F9F9] font-helvetica font-normal">
     @include('layouts.partials.navbar')
     @yield('content')
+    @include('components.footer')
 
     {{-- Final script initialization --}}
     <script>

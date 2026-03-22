@@ -68,7 +68,7 @@ Route::get('/', function () {
     $newsItems = Berita::orderBy('date', 'desc')->take(3)->get();
 
     return view('pages.beranda', compact('presiden', 'topOfficials', 'upcomingProkers', 'allProkers', 'newsItems'));
-});
+})->name('beranda');
 
 // Route baru untuk halaman Profil
 Route::get('/profile', function () {
@@ -99,7 +99,19 @@ Route::get('/profile', function () {
     $totalAgenda = Agenda::count();
 
     return view('pages.profile', compact('leaders', 'totalFungsionaris', 'totalStaffMuda', 'totalKementerian', 'totalProker', 'totalAgenda'));
-});
+})->name('profile');
+
+// Route for Kementerian Index
+Route::get('/kementerian', function () {
+    $kementerians = Kementerian::with('jabatan')->get();
+    return view('pages.kementerian', compact('kementerians'));
+})->name('kementerian');
+
+// Route for Agenda Page
+Route::get('/agenda', function () {
+    $agendas = Agenda::orderBy('tanggal', 'desc')->get();
+    return view('pages.agenda', compact('agendas'));
+})->name('agenda');
 
 // Route for News Index Page
 Route::get('/berita', function () {
@@ -131,39 +143,18 @@ Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.l
 Route::post('/admin/login', [AdminController::class, 'login']);
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+use App\Http\Controllers\AspirasiController;
+
+// ... (other imports)
+
+// Route untuk pengiriman Aspirasi (Public)
+Route::post('/aspirasi', [AspirasiController::class, 'store'])->name('aspirasi.store');
+
 // Admin Dashboard Routes (Protected by auth middleware)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    
-    // News Management
-    Route::get('/news', [AdminController::class, 'newsIndex'])->name('news.index');
-    Route::get('/news/create', [AdminController::class, 'newsCreate'])->name('news.create');
-    Route::post('/news', [AdminController::class, 'newsStore'])->name('news.store');
-    Route::get('/news/{berita}/edit', [AdminController::class, 'newsEdit'])->name('news.edit');
-    Route::put('/news/{berita}', [AdminController::class, 'newsUpdate'])->name('news.update');
-    Route::delete('/news/{berita}', [AdminController::class, 'newsDestroy'])->name('news.destroy');
+    // ... (existing admin routes)
 
-    // Fungsionaris Management
-    Route::get('/fungsionaris', [AdminController::class, 'fungsionarisIndex'])->name('fungsionaris.index');
-    Route::get('/fungsionaris/create', [AdminController::class, 'fungsionarisCreate'])->name('fungsionaris.create');
-    Route::post('/fungsionaris', [AdminController::class, 'fungsionarisStore'])->name('fungsionaris.store');
-    Route::get('/fungsionaris/{fungsionaris}/edit', [AdminController::class, 'fungsionarisEdit'])->name('fungsionaris.edit');
-    Route::put('/fungsionaris/{fungsionaris}', [AdminController::class, 'fungsionarisUpdate'])->name('fungsionaris.update');
-    Route::delete('/fungsionaris/{fungsionaris}', [AdminController::class, 'fungsionarisDestroy'])->name('fungsionaris.destroy');
-
-    // Proker Management
-    Route::get('/proker', [AdminController::class, 'prokerIndex'])->name('proker.index');
-    Route::get('/proker/create', [AdminController::class, 'prokerCreate'])->name('proker.create');
-    Route::post('/proker', [AdminController::class, 'prokerStore'])->name('proker.store');
-    Route::get('/proker/{proker}/edit', [AdminController::class, 'prokerEdit'])->name('proker.edit');
-    Route::put('/proker/{proker}', [AdminController::class, 'prokerUpdate'])->name('proker.update');
-    Route::delete('/proker/{proker}', [AdminController::class, 'prokerDestroy'])->name('proker.destroy');
-
-    // Agenda Management
-    Route::get('/agenda', [AdminController::class, 'agendaIndex'])->name('agenda.index');
-    Route::get('/agenda/create', [AdminController::class, 'agendaCreate'])->name('agenda.create');
-    Route::post('/agenda', [AdminController::class, 'agendaStore'])->name('agenda.store');
-    Route::get('/agenda/{agenda}/edit', [AdminController::class, 'agendaEdit'])->name('agenda.edit');
-    Route::put('/agenda/{agenda}', [AdminController::class, 'agendaUpdate'])->name('agenda.update');
-    Route::delete('/agenda/{agenda}', [AdminController::class, 'agendaDestroy'])->name('agenda.destroy');
+    // Aspirasi Management
+    Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
+    Route::delete('/aspirasi/{aspirasi}', [AspirasiController::class, 'destroy'])->name('aspirasi.destroy');
 });
