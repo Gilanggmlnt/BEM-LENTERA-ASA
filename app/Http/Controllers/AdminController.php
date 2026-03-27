@@ -80,7 +80,7 @@ class AdminController extends Controller
             'excerpt' => 'nullable',
             'description' => 'required',
             'link' => 'nullable|url',
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:3072',
         ]);
 
         if ($request->hasFile('image')) {
@@ -161,7 +161,7 @@ class AdminController extends Controller
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $photoName = time() . '_' . Str::slug($data['nama_fungsionaris']) . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path('images'), $photoName);
+            $photo->move(public_path('images/foto_fungsionaris'), $photoName);
             $data['photo_path'] = $photoName;
         }
 
@@ -186,12 +186,14 @@ class AdminController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            if ($fungsionaris->photo_path && file_exists(public_path('images/' . $fungsionaris->photo_path))) {
+            if ($fungsionaris->photo_path && file_exists(public_path('images/foto_fungsionaris/' . $fungsionaris->photo_path))) {
+                unlink(public_path('images/foto_fungsionaris/' . $fungsionaris->photo_path));
+            } elseif ($fungsionaris->photo_path && file_exists(public_path('images/' . $fungsionaris->photo_path))) {
                 unlink(public_path('images/' . $fungsionaris->photo_path));
             }
             $photo = $request->file('photo');
             $photoName = time() . '_' . Str::slug($data['nama_fungsionaris']) . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path('images'), $photoName);
+            $photo->move(public_path('images/foto_fungsionaris'), $photoName);
             $data['photo_path'] = $photoName;
         }
 
@@ -201,7 +203,9 @@ class AdminController extends Controller
 
     public function fungsionarisDestroy(Fungsionaris $fungsionaris)
     {
-        if ($fungsionaris->photo_path && file_exists(public_path('images/' . $fungsionaris->photo_path))) {
+        if ($fungsionaris->photo_path && file_exists(public_path('images/foto_fungsionaris/' . $fungsionaris->photo_path))) {
+            unlink(public_path('images/foto_fungsionaris/' . $fungsionaris->photo_path));
+        } elseif ($fungsionaris->photo_path && file_exists(public_path('images/' . $fungsionaris->photo_path))) {
             unlink(public_path('images/' . $fungsionaris->photo_path));
         }
         $fungsionaris->delete();

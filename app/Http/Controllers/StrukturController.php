@@ -77,7 +77,7 @@ class StrukturController extends Controller
                     'data' => [
                         'jabatan' => $jabatan,
                         'nama' => $fungsionaris['nama'],
-                        'foto' => '/images/' . $fungsionaris['foto'],
+                        'foto' => '/images/foto_fungsionaris/' . $fungsionaris['foto'],
                     ],
                     'type' => 'card',
                 ];
@@ -113,7 +113,7 @@ class StrukturController extends Controller
                     ],
                     'data' => [
                         'nama' => $kemName,
-                        'foto' => '/images/logo_kementerian/logo_' . Str::slug($kemName, '') . '.png',
+                        'foto' => '/images/logo_kementerian/' . Str::slug($kemName) . '.png',
                     ],
                     'type' => 'logo',
                 ];

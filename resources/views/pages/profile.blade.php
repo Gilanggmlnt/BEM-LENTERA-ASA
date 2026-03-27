@@ -231,7 +231,7 @@ nav.is-sticky {
                 class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] cursor-pointer hover:bg-yellow-50 transition-colors"
                 data-name="{{ $presma->nama_fungsionaris ?? 'Kevin Kurnia Priambodo' }}"
                 data-role="Presiden Mahasiswa"
-                data-photo="{{ asset('images/' . ($presma->photo_path ?? 'Foto_Presma_Kevin.png')) }}"
+                data-photo="{{ asset('images/foto_fungsionaris/' . ($presma->photo_path ?? 'Foto_Presma_Kevin.png')) }}"
                 data-desc="Memimpin dan mengarahkan jalannya roda organisasi BEM KBM Polines serta menjadi representasi utama mahasiswa di tingkat internal maupun eksternal."
             >
                 Presiden Mahasiswa
@@ -244,7 +244,7 @@ nav.is-sticky {
                 class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] cursor-pointer hover:bg-yellow-50 transition-colors"
                 data-name="{{ $wapresma->nama_fungsionaris ?? 'Anggara Yudha Pratama' }}"
                 data-role="Wakil Presiden Mahasiswa"
-                data-photo="{{ asset('images/' . ($wapresma->photo_path ?? 'Foto_Wapresma_Anggara.png')) }}"
+                data-photo="{{ asset('images/foto_fungsionaris/' . ($wapresma->photo_path ?? 'Foto_Wapresma_Anggara.png')) }}"
                 data-desc="Mendampingi Presiden Mahasiswa dalam mengawasi kinerja kabinet serta memastikan koordinasi antar elemen organisasi berjalan dengan harmonis."
             >
                 Wakil Presiden Mahasiswa
@@ -268,7 +268,7 @@ nav.is-sticky {
                         class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-8 py-3 font-bold text-base text-center shadow-md min-w-[220px] z-box cursor-pointer hover:bg-yellow-50 transition-colors"
                         data-name="{{ $sekab->nama_fungsionaris ?? 'Fazila Banyulangit P.' }}"
                         data-role="Sekretaris Kabinet"
-                        data-photo="{{ asset('images/' . ($sekab->photo_path ?? 'Foto_SekretarisKabinet_Fazila.png')) }}"
+                        data-photo="{{ asset('images/foto_fungsionaris/' . ($sekab->photo_path ?? 'Foto_SekretarisKabinet_Fazila.png')) }}"
                         data-desc="Bertanggung jawab atas tata kelola administrasi pusat dan sinkronisasi agenda strategis antar kementerian di bawah naungannya."
                         data-oversight="Kesekretariatan, Keuangan, Komunikasi dan Informasi"
                     >
@@ -320,7 +320,7 @@ nav.is-sticky {
                     class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
                     data-name="{{ $menkoInternal->nama_fungsionaris ?? 'Muhammad Hammam Shidqi' }}"
                     data-role="Menteri Koordinator Internal"
-                    data-photo="{{ asset('images/' . ($menkoInternal->photo_path ?? 'Foto_MenkoInternal_Muhammad.png')) }}"
+                    data-photo="{{ asset('images/foto_fungsionaris/' . ($menkoInternal->photo_path ?? 'Foto_MenkoInternal_Muhammad.png')) }}"
                     data-desc="Mengkoordinasikan kementerian yang berfokus pada penguatan internal organisasi dan pengembangan sumber daya mahasiswa."
                     data-oversight="Dalam Negeri, PSDM, Agama"
                 >
@@ -364,7 +364,7 @@ nav.is-sticky {
                     class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
                     data-name="{{ $menkoMhs->nama_fungsionaris ?? 'Aditya Rizal Pramudya' }}"
                     data-role="Menteri Koordinator Kemahasiswaan"
-                    data-photo="{{ asset('images/' . ($menkoMhs->photo_path ?? 'Foto_MenkoKemahasiswaan_Aditya.png')) }}"
+                    data-photo="{{ asset('images/foto_fungsionaris/' . ($menkoMhs->photo_path ?? 'Foto_MenkoKemahasiswaan_Aditya.png')) }}"
                     data-desc="Mengkoordinasikan kementerian yang bergerak di bidang pelayanan minat, bakat, riset, dan kesejahteraan seluruh mahasiswa."
                     data-oversight="Advokesma, Minat & Bakat, Riset & Keilmuan, Ekonomi Kreatif"
                 >
@@ -414,7 +414,7 @@ nav.is-sticky {
                     class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
                     data-name="{{ $menkoMasy->nama_fungsionaris ?? 'Auliya Putra' }}"
                     data-role="Menteri Koordinator Kemasyarakatan"
-                    data-photo="{{ asset('images/' . ($menkoMasy->photo_path ?? 'Foto_MenkoKemasyarakatan_Auliya.png')) }}"
+                    data-photo="{{ asset('images/foto_fungsionaris/' . ($menkoMasy->photo_path ?? 'Foto_MenkoKemasyarakatan_Auliya.png')) }}"
                     data-desc="Mengkoordinasikan kementerian yang berfokus pada pengabdian masyarakat dan pelestarian lingkungan hidup."
                     data-oversight="Lingkungan Hidup, Sosial Masyarakat"
                 >
@@ -450,7 +450,7 @@ nav.is-sticky {
                     class="leader-node relative bg-white border-2 border-yellow-400 rounded-lg px-6 py-3 font-bold text-base text-center shadow-md min-w-[200px] mt-16 z-box cursor-pointer hover:bg-yellow-50 transition-colors"
                     data-name="{{ $menkoRelasi->nama_fungsionaris ?? 'Revanza Dhimas Erudita' }}"
                     data-role="Menteri Koordinator Relasi dan Pergerakan"
-                    data-photo="{{ asset('images/' . ($menkoRelasi->photo_path ?? 'Foto_MenkoRelasidanPegerakan_Revanza.png')) }}"
+                    data-photo="{{ asset('images/foto_fungsionaris/' . ($menkoRelasi->photo_path ?? 'Foto_MenkoRelasidanPegerakan_Revanza.png')) }}"
                     data-desc="Mengkoordinasikan kementerian yang bergerak di bidang kajian sosial politik dan hubungan luar negeri organisasi."
                     data-oversight="Sosial Politik, Luar Negeri"
                 >

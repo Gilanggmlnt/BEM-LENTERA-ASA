@@ -11,6 +11,17 @@
     <p class="text-gray-500">Silakan isi formulir di bawah ini untuk {{ isset($berita) ? 'memperbarui' : 'menerbitkan' }} berita.</p>
 </div>
 
+@if ($errors->any())
+    <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-r-xl shadow-sm max-w-4xl">
+        <p class="font-bold mb-1 text-sm">Terjadi kesalahan pada data yang Anda masukkan:</p>
+        <ul class="list-disc list-inside text-xs">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form action="{{ isset($berita) ? route('admin.news.update', $berita->id) : route('admin.news.store') }}" 
       method="POST" enctype="multipart/form-data" 
       class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 space-y-6 max-w-4xl">
@@ -53,7 +64,7 @@
             @endif
             <input type="file" name="image" {{ isset($berita) ? '' : 'required' }}
                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary outline-none transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
-            <p class="text-[10px] text-gray-400 mt-1">Format: JPG, PNG, WEBP. Maks: 2MB.</p>
+            <p class="text-[10px] text-gray-400 mt-1">Format: JPG, PNG, WEBP. Maks: 3MB.</p>
         </div>
 
         <div class="md:col-span-2">

@@ -164,7 +164,7 @@ nav.is-sticky {
                 <div class="bg-white rounded-2xl overflow-hidden relative z-10
                             h-[250px] w-[180px] sm:h-[320px] sm:w-[240px] md:h-[400px] md:w-[300px]
                             hover:scale-105 transition-transform duration-500">
-                    <img src="{{ ($presiden && $presiden->photo_path) ? asset('images/' . $presiden->photo_path) : asset('images/Foto_Presma_Kevin.png') }}"
+                    <img src="{{ ($presiden && $presiden->photo_path) ? asset('images/foto_fungsionaris/' . $presiden->photo_path) : asset('images/foto_fungsionaris/Foto_Presma_Kevin.png') }}"
                          alt="Presiden Mahasiswa"
                          class="w-full h-full object-cover transition duration-500">
 

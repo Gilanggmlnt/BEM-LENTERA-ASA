@@ -127,11 +127,19 @@ nav.is-sticky {
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     @forelse($members as $member)
-                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center hover:shadow-md transition-shadow">
+                    @php
+                        $hasPhoto = $member->photo_path && file_exists(public_path('images/foto_fungsionaris/' . $member->photo_path));
+                        $photoUrl = $hasPhoto ? asset('images/foto_fungsionaris/' . $member->photo_path) : '';
+                    @endphp
+                    <div class="member-card cursor-pointer bg-gray-50 border border-gray-200 rounded-lg p-3 text-center hover:shadow-md transition-all hover:-translate-y-1"
+                         data-name="{{ $member->nama_fungsionaris }}"
+                         data-role="{{ $member->jabatan->nama_jabatan }}"
+                         data-ministry="{{ $kementerian->nama_kementerian }}"
+                         data-photo="{{ $photoUrl }}">
                         <div class="w-16 h-16 rounded-full mx-auto mb-2 overflow-hidden border-2 border-primary/30 bg-white">
-                            @if($member->photo_path && file_exists(public_path('images/foto_fungsionaris/' . $member->photo_path)))
+                            @if($hasPhoto)
                                 <img
-                                    src="{{ asset('images/foto_fungsionaris/' . $member->photo_path) }}"
+                                    src="{{ $photoUrl }}"
                                     alt="{{ $member->nama_fungsionaris }}"
                                     class="w-full h-full object-cover"
                                 />
@@ -147,6 +155,30 @@ nav.is-sticky {
                     @empty
                     <p class="col-span-full text-center text-gray-500">Tidak ada anggota ditemukan untuk kementerian ini.</p>
                     @endforelse
+                </div>
+            </div>
+
+            {{-- MEMBER MODAL --}}
+            <div id="memberModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+                <div class="absolute inset-0 bg-dark/80 backdrop-blur-sm" onclick="closeMemberModal()"></div>
+                <div class="bg-white rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl relative animate-in fade-in zoom-in duration-300">
+                    <button onclick="closeMemberModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-dark transition-all">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                    <div class="p-8 text-center">
+                        <div class="w-64 h-80 rounded-xl mx-auto mb-6 overflow-hidden border-4 border-primary/20 bg-gray-50">
+                            <img id="modalMemberPhoto" src="" alt="" class="w-full h-full object-cover">
+                            <div id="modalMemberPhotoPlaceholder" class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 hidden">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <h3 id="modalMemberName" class="text-xl font-bold text-dark mb-1"></h3>
+                        <p id="modalMemberRole" class="text-primary font-semibold text-sm mb-4"></p>
+                        <div class="pt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Kementerian</p>
+                            <p id="modalMemberMinistry" class="text-gray-600 text-sm font-medium"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -251,6 +283,46 @@ nav.is-sticky {
                 }
             });
         }
+
+        // Member Modal Logic
+        const memberModal = document.getElementById('memberModal');
+        const memberCards = document.querySelectorAll('.member-card');
+        
+        memberCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const name = card.getAttribute('data-name');
+                const role = card.getAttribute('data-role');
+                const ministry = card.getAttribute('data-ministry');
+                const photo = card.getAttribute('data-photo');
+
+                document.getElementById('modalMemberName').textContent = name;
+                document.getElementById('modalMemberRole').textContent = role;
+                document.getElementById('modalMemberMinistry').textContent = ministry;
+                
+                const photoImg = document.getElementById('modalMemberPhoto');
+                const photoPlaceholder = document.getElementById('modalMemberPhotoPlaceholder');
+                
+                if (photo) {
+                    photoImg.src = photo;
+                    photoImg.alt = name;
+                    photoImg.classList.remove('hidden');
+                    photoPlaceholder.classList.add('hidden');
+                } else {
+                    photoImg.classList.add('hidden');
+                    photoPlaceholder.classList.remove('hidden');
+                }
+
+                memberModal.classList.remove('hidden');
+                memberModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        window.closeMemberModal = function() {
+            memberModal.classList.add('hidden');
+            memberModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        };
     });
 </script>
 
