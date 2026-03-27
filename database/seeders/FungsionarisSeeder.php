@@ -84,11 +84,11 @@ class FungsionarisSeeder extends Seeder
             ['nama' => 'Marissa Athia Shabrina', 'kementerian' => 'Kementerian Dalam Negeri', 'jabatan' => 'Staff Muda', 'foto' => 'Foto_Dagri_Marissa.png'],
 
             // Kementerian Pengembangan Sumber Daya Mahasiswa
-            ['nama' => 'Muhamad Fauzan. A', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Menteri', 'foto' => 'Foto_PSDM_MuhamadFauzan.png'],
+            ['nama' => 'Muhammad Fauzan. A', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Menteri', 'foto' => 'Foto_PSDM_MuhammadFauzan.png'],
             ['nama' => 'Angesti Naia Dewi Suciyani', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Wakil Menteri', 'foto' => 'Foto_PSDM_Angesti.png'],
-            ['nama' => 'Archibald Amanullah A', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Archibald.png'],
+            ['nama' => 'Archibald Amanullah Aryapati', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Archibald.png'],
             ['nama' => 'Rahmalia Anugrah Jovinanda', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Rahmalia.png'],
-            ['nama' => 'Tahta Nida’il M', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Tahta.png'],
+            ['nama' => "Tahta Nida'il", 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Tahta.png'],
             ['nama' => 'Denyssa Soraya', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Denyssa.png'],
             ['nama' => 'El Zafran Mohammad Syah', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_El.png'],
             ['nama' => 'Adiyatma', 'kementerian' => 'Kementerian Pengembangan Sumber Daya Mahasiswa', 'jabatan' => 'Deputi', 'foto' => 'Foto_PSDM_Adiyatma.png'],

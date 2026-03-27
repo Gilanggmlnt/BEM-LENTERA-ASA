@@ -32,7 +32,7 @@ class ProkerSeeder extends Seeder
             [
                 'kementerian' => 'Pengembangan Sumber Daya Mahasiswa',
                 'nama_proker' => 'Makrab Internal',
-                'nama_ketuplak' => 'Archibald Amanullah Aryapati',
+                'nama_ketuplak' => 'Archibald Amanullah A',
                 'deskripsi_proker' => 'Makrab Internal merupakan salah satu progam agenda dari PSDM adanya makrab untuk membuat keakraban satu sama lain, dengan konsepan game, fgd, dan sarasehan',
                 'pamflet' => '/images/flyer_proker/makrab_internal.png',
                 'tanggal_pelaksanaan' => '2025-09-27',
@@ -104,7 +104,7 @@ class ProkerSeeder extends Seeder
             [
                 'kementerian' => 'Pengembangan Sumber Daya Mahasiswa',
                 'nama_proker' => 'LKMM Madya 2026',
-                'nama_ketuplak' => 'Tahta Nida\'il',
+                'nama_ketuplak' => 'Tahta Nida\'il M',
                 'deskripsi_proker' => 'LKMM Madya merupakan pelatihan manajamen mahasiswa yang bertujuan untuk membentuk karakter sebagai seorang pemimpin, pada kegiatan ini mahasiswa di bekali ilmu tentang kedisiplinan, berpikir strategis and keterampilan manajerial',
                 'pamflet' => '/images/flyer_proker/lkmm_madya.png',
                 'tanggal_pelaksanaan' => '2026-01-27',

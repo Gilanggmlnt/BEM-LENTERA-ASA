@@ -640,66 +640,134 @@ nav.is-sticky {
 </script>
 
     {{-- ================= FORM KRITIK & SARAN ================= --}}
-    <section id="aspirasi" class="py-24 bg-white">
+    <section id="aspirasi" class="py-24 bg-white border-t border-gray-50">
         <div class="container mx-auto px-4 md:px-8 lg:px-16">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Suara Mahasiswa</h2>
-                    <p class="text-gray-500">Punya kritik, saran, atau aspirasi untuk BEM KBM Polines? Sampaikan di sini secara anonim maupun terbuka.</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-dark mb-4 tracking-tight">Suara Mahasiswa</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto">Punya kritik, saran, atau aspirasi untuk BEM KBM Polines? Sampaikan di sini secara anonim maupun terbuka.</p>
                 </div>
 
-                @if(session('success'))
-                    <div class="mb-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-2xl flex items-center gap-3">
-                        <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        {{ session('success') }}
-                    </div>
-                @endif
+                <div id="aspirasi-alert" class="hidden mb-8 p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4">
+                    <div id="alert-icon"></div>
+                    <p id="alert-message" class="font-medium"></p>
+                </div>
 
-                @if(session('error'))
-                    <div class="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3">
-                        <i data-lucide="alert-circle" class="w-5 h-5"></i>
-                        {{ session('error') }}
-                    </div>
-                @endif
-
-                <form action="{{ route('aspirasi.store') }}" method="POST" class="bg-[#F9F9F9] p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm">
+                <form id="aspirasi-form" action="{{ route('aspirasi.store') }}" method="POST" class="bg-[#F9F9F9] p-8 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-sm relative overflow-hidden group">
                     @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-dark ml-1">Nama Pengirim (Opsional)</label>
+                            <label class="text-sm font-bold text-dark ml-1">Nama Pengirim <span class="text-gray-400 font-normal">(Opsional)</span></label>
                             <input type="text" name="nama_pengirim" placeholder="Masukkan nama atau kosongkan untuk anonim" 
-                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
+                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white placeholder:text-gray-300">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-dark ml-1">Email (Opsional)</label>
+                            <label class="text-sm font-bold text-dark ml-1">Email <span class="text-gray-400 font-normal">(Opsional)</span></label>
                             <input type="email" name="email_pengirim" placeholder="email@contoh.com" 
-                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
+                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white placeholder:text-gray-300">
                         </div>
                     </div>
 
                     <div class="space-y-2 mb-6">
-                        <label class="text-sm font-semibold text-dark ml-1">Kategori</label>
-                        <select name="kategori" required 
-                            class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none appearance-none bg-white">
-                            <option value="Kritik">Kritik</option>
-                            <option value="Saran">Saran</option>
-                            <option value="Aspirasi">Aspirasi Umum</option>
-                        </select>
+                        <label class="text-sm font-bold text-dark ml-1">Kategori</label>
+                        <div class="relative">
+                            <select name="kategori" required 
+                                class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none appearance-none bg-white">
+                                <option value="Kritik">Kritik</option>
+                                <option value="Saran">Saran</option>
+                                <option value="Aspirasi">Aspirasi Umum</option>
+                            </select>
+                            <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="space-y-2 mb-8">
-                        <label class="text-sm font-semibold text-dark ml-1">Pesan Aspirasi</label>
+                        <label class="text-sm font-bold text-dark ml-1">Pesan Aspirasi</label>
                         <textarea name="pesan" rows="5" required placeholder="Tuliskan kritik, saran, atau aspirasi Anda di sini..." 
-                            class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none resize-none"></textarea>
+                            class="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none resize-none bg-white placeholder:text-gray-300"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-dark text-white hover:bg-primary hover:text-dark font-bold py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 group">
-                        Kirim Aspirasi
-                        <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    <button type="submit" id="btn-submit-aspirasi" class="w-full bg-dark text-white hover:bg-primary hover:text-dark font-bold py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 group/btn shadow-xl shadow-dark/10 hover:shadow-primary/20">
+                        <span id="btn-text">Kirim Aspirasi</span>
+                        <div id="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        </div>
                     </button>
                 </form>
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById('aspirasi-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const btn = document.getElementById('btn-submit-aspirasi');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+            const alert = document.getElementById('aspirasi-alert');
+            const alertMsg = document.getElementById('alert-message');
+            const alertIcon = document.getElementById('alert-icon');
+            
+            // Simpan konten asli
+            const originalBtnText = btnText.textContent;
+            const originalBtnIcon = btnIcon.innerHTML;
+            
+            // State Loading
+            btn.disabled = true;
+            btnText.textContent = 'Sedang Mengirim...';
+            btnIcon.innerHTML = '<svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                alert.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-100', 'bg-green-50', 'text-green-800', 'border-green-100');
+                
+                if (response.ok) {
+                    // Sukses
+                    alert.classList.add('bg-green-50', 'text-green-800', 'border-green-100');
+                    alertIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                    alertMsg.textContent = result.message || 'Aspirasi Anda berhasil dikirim! Terima kasih atas masukannya.';
+                    form.reset();
+                    
+                    // Scroll ke alert
+                    alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    // Error Validasi atau Server
+                    alert.classList.add('bg-red-50', 'text-red-800', 'border-red-100');
+                    alertIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>';
+                    alertMsg.textContent = result.message || 'Gagal mengirim aspirasi. Silakan periksa kembali pesan Anda.';
+                }
+            } catch (error) {
+                // Error Jaringan
+                alert.classList.remove('hidden');
+                alert.classList.add('bg-red-50', 'text-red-800', 'border-red-100');
+                alertIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>';
+                alertMsg.textContent = 'Koneksi bermasalah. Silakan coba beberapa saat lagi.';
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = originalBtnText;
+                btnIcon.innerHTML = originalBtnIcon;
+                
+                // Sembunyikan alert otomatis setelah 8 detik
+                setTimeout(() => {
+                    alert.classList.add('hidden');
+                }, 8000);
+            }
+        });
+    </script>
 @endsection
 

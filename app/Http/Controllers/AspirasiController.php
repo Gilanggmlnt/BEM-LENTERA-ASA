@@ -21,8 +21,23 @@ class AspirasiController extends Controller
 
         try {
             Aspirasi::create($validated);
+            
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Aspirasi Anda berhasil terkirim. Terima kasih!'
+                ]);
+            }
+
             return back()->with('success', 'Aspirasi Anda berhasil terkirim. Terima kasih!');
         } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Gagal mengirim aspirasi. Silakan coba lagi.'
+                ], 500);
+            }
+            
             return back()->with('error', 'Gagal mengirim aspirasi. Silakan coba lagi.');
         }
     }
@@ -30,14 +45,12 @@ class AspirasiController extends Controller
     /**
      * Display listing for admin.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $aspirasis = Aspirasi::orderBy('created_at', 'desc')->paginate(10);
+        $perPage = $request->get('per_page', 10);
+        $aspirasis = Aspirasi::orderBy('created_at', 'desc')->paginate($perPage);
         
-        // Mark all as read when admin visits the list (optional)
-        // Aspirasi::where('is_read', false)->update(['is_read' => true]);
-
-        return view('admin.aspirasi.index', compact('aspirasis'));
+        return view('admin.aspirasi.index', compact('aspirasis', 'perPage'));
     }
 
     /**
