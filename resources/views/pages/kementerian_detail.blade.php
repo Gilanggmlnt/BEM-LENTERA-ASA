@@ -129,9 +129,9 @@ nav.is-sticky {
                     @forelse($members as $member)
                     <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center hover:shadow-md transition-shadow">
                         <div class="w-16 h-16 rounded-full mx-auto mb-2 overflow-hidden border-2 border-primary/30 bg-white">
-                            @if($member->photo_path && file_exists(public_path('images/' . $member->photo_path)))
+                            @if($member->photo_path && file_exists(public_path('images/foto_fungsionaris/' . $member->photo_path)))
                                 <img
-                                    src="{{ asset('images/' . $member->photo_path) }}"
+                                    src="{{ asset('images/foto_fungsionaris/' . $member->photo_path) }}"
                                     alt="{{ $member->nama_fungsionaris }}"
                                     class="w-full h-full object-cover"
                                 />
