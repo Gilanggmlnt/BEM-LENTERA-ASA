@@ -233,14 +233,15 @@ class FungsionarisSeeder extends Seeder
 
             // Kementerian Sosial Politik
             ['nama' => 'Athaya Pandu Mareno', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Menteri', 'foto' => 'Foto_Sospol_Athaya.png'],
-            ['nama' => 'Atha Nadiah Arsanti', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Wakil Menteri', 'foto' => 'Foto_Sospol_Atha.png'],
+            ['nama' => 'Muhammad Raihan Bintang Ramadhan', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Wakil Menteri', 'foto' => 'Foto_Sospol_MuhammadRaihan.png'],
+            ['nama' => 'Atha Nadiah Arsanti', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Atha.png'],
             ['nama' => 'Rohimatun Nurin Nadhifah', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Rohimatun.png'],
+            ['nama' => 'Adila Dimaz', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Adila.png'],
             ['nama' => 'Patria Maheswara Rifqiano', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Patria.png'],
             ['nama' => 'Ovi Permata Wulandari', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Ovi.png'],
             ['nama' => 'Malida Naufalina Sinta Dewi', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Malida.png'],
             ['nama' => 'Purwoko Samirudin', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_Purwoko.png'],
             ['nama' => 'Muhammad Ibrahim', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_MuhammadIbrahim.png'],
-            ['nama' => 'Muhammad Raihan Bintang Ramadhan', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Deputi', 'foto' => 'Foto_Sospol_MuhammadRaihan.png'],
             ['nama' => 'Tama Jering Eno Travis', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Staff Muda', 'foto' => 'Foto_Sospol_Tama.png'],
             ['nama' => 'Muhammad Farell Aditya Hermawan', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Staff Muda', 'foto' => 'Foto_Sospol_MuhammadFarell.png'],
             ['nama' => 'Aisyah Adinda Tsabita', 'kementerian' => 'Kementerian Sosial Politik', 'jabatan' => 'Staff Muda', 'foto' => 'Foto_Sospol_Aisyah.png'],

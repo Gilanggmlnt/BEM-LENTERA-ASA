@@ -125,7 +125,7 @@ class ProkerSeeder extends Seeder
                 'nama_ketuplak' => 'Anisa Farcha Noviani',
                 'deskripsi_proker' => 'Seminar tematik merupakan seminar yang membahas 1 tema khusus secara fokus and mendalam. Jadi, fokus pembahasannya tidak melebar kemana mana, namun benar-benar terarah pada satu topik utama',
                 'pamflet' => '/images/flyer_proker/seminar_tematik.png',
-                'tanggal_pelaksanaan' => '2026-03-07',
+                'tanggal_pelaksanaan' => '2026-04-11',
                 'dokumentasi' => '/images/foto_proker/seminar_tematik_1.png, /images/foto_proker/seminar_tematik_2.png, /images/foto_proker/seminar_tematik_3.png'
             ],
             [

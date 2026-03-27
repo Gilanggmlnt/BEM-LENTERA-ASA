@@ -98,7 +98,7 @@
         <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-500">
             <div class="text-center md:text-left">
                 <p>&copy; {{ date('Y') }} <span class="text-white font-medium">BEM KBM POLINES</span>. All Right Reserved.</p>
-                <p class="mt-1">Dikelola dengan Dedikasi oleh <span class="text-primary hover:underline cursor-pointer">Kementerian Komunikasi dan Informasi</span></p>
+                <p class="mt-1">Dikelola penuh Dedikasi oleh <span class="text-primary hover:underline cursor-pointer">Kementerian Komunikasi dan Informasi</span></p>
             </div>
             <div class="flex items-center gap-6">
                 <a href="#" class="hover:text-primary transition-colors">Kebijakan Privasi</a>

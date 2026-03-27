@@ -193,9 +193,10 @@ nav.is-sticky {
             </h2>
 
             <p class="text-dark leading-relaxed md::text-lg">
-                Hidup Mahasiswa! Hidup Rakyat Indonesia!<br><br>
-                Kami hadir membawa Kabinet Lentera Asa, sebuah visi untuk menjadikan BEM sebagai cahaya penggerak yang mampu menyalakan harapan dan memberikan solusi nyata bagi seluruh mahasiswa Polines. Di bawah semangat kolaborasi dan integritas, kami berkomitmen untuk menjadi wadah yang inklusif, responsif, dan kontributif.
-                Mari bergerak bersama, menjaga nyala harapan, dan mewujudkan perubahan yang lebih bermakna bagi almamater serta bangsa.
+                Hidup Mahasiswa! Hidup Rakyat Indonesia! <br>Hidup Perempuan yang Melawan!<br><br>
+                Kami hadir membawa Kabinet Lentera Asa sebagai ikhtiar meneguhkan BEM sebagai ruang gerak yang menyalakan kesadaran, harapan, dan keberpihakan. Di tengah dinamika zaman, kami berkomitmen menghadirkan BEM yang inklusif, responsif, dan berdaya guna bagi seluruh mahasiswa Polines.
+                <br><br>
+                Berangkat dari semangat kolaborasi dan integritas, kami mendorong gerakan yang partisipatif dan transformatif—tidak hanya menjadi suara kritis, tetapi juga menghadirkan solusi nyata. Mari bergerak bersama, menjaga nyala harapan, dan mewujudkan perubahan yang lebih bermakna bagi almamater serta bangsa.
             </p>
 
             <p class="text-dark leading-relaxed italic border-l-4 border-primary pl-4 md:pl-6 md::text-lg">
@@ -335,7 +336,7 @@ nav.is-sticky {
 
                     {{-- Logo Kementerian --}}
                     <div class="flex justify-center mb-4">
-                        <div class="w-14 h-14 p-2 rounded-full bg-white shadow-md flex items-center justify-center -mt-12 overflow-hidden border-2 border-primary/20 p-1">
+                        <div class="w-14 h-14 p-2 rounded-full bg-white shadow-md flex items-center justify-center -mt-12 overflow-hidden border-2 border-primary/20">
                             @if($proker->kementerian->nama_kementerian == 'BEM KBM POLINES')
                                 <img src="{{ asset('images/logolensa.png') }}" class="w-full h-full object-contain">
                             @elseif(file_exists(public_path($logoPath)))
