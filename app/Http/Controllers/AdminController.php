@@ -10,6 +10,7 @@ use App\Models\Proker;
 use App\Models\Agenda;
 use App\Models\Kementerian;
 use App\Models\Jabatan;
+use App\Models\Aspirasi;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
@@ -53,9 +54,10 @@ class AdminController extends Controller
         $fungsionarisCount = Fungsionaris::count();
         $agendasCount = Agenda::count();
         $prokersCount = Proker::count();
+        $aspirasisCount = Aspirasi::count();
 
         $beritas = Berita::orderBy('date', 'desc')->take(5)->get();
-        return view('admin.dashboard', compact('beritas', 'beritasCount', 'fungsionarisCount', 'agendasCount', 'prokersCount'));
+        return view('admin.dashboard', compact('beritas', 'beritasCount', 'fungsionarisCount', 'agendasCount', 'prokersCount', 'aspirasisCount'));
     }
 
     // === CRUD BERITA ===

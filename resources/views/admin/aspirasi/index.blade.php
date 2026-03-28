@@ -21,69 +21,73 @@
 
 {{-- Table --}}
 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-6">
-    <table class="w-full text-left border-collapse">
-        <thead>
-            <tr class="bg-gray-50 border-b border-gray-100">
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Pengirim</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Kategori</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Pesan</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right">Aksi</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-50">
-            @forelse($aspirasis as $item)
-            <tr class="hover:bg-gray-50/50 transition-colors">
-                <td class="px-6 py-4">
-                    <div>
-                        <p class="font-bold text-dark text-sm">{{ $item->nama_pengirim ?? 'Anonim' }}</p>
-                        <p class="text-[10px] text-gray-400">{{ $item->email_pengirim ?? '-' }}</p>
-                        <p class="text-[10px] text-gray-400">{{ $item->created_at->translatedFormat('d F Y, H:i') }} WIB</p>
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    <span class="px-2 py-1 text-[10px] font-bold rounded-md uppercase 
-                        @if($item->kategori == 'Kritik') bg-red-100 text-red-600 
-                        @elseif($item->kategori == 'Saran') bg-blue-100 text-blue-600 
-                        @else bg-green-100 text-green-600 @endif">
-                        {{ $item->kategori }}
-                    </span>
-                </td>
-                <td class="px-6 py-4">
-                    <div class="max-w-xs md:max-w-md">
-                        <p class="text-sm text-gray-600 truncate">{{ $item->pesan }}</p>
-                        <button 
-                            onclick="showDetail(
-                                '{{ $item->nama_pengirim ?? 'Anonim' }}', 
-                                '{{ $item->kategori }}', 
-                                @js($item->pesan), 
-                                '{{ $item->created_at->translatedFormat('d F Y, H:i') }}'
-                            )" 
-                            class="text-[10px] font-bold text-primary hover:underline mt-1 uppercase tracking-wider">
-                            Lihat Detail
-                        </button>
-                    </div>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <div class="flex justify-end gap-2">
-                        <form action="{{ route('admin.aspirasi.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aspirasi ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse table-fixed">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-1/4">Pengirim</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-40">Kategori</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-auto">Pesan Preview</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right w-24">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @forelse($aspirasis as $item)
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                    <td class="px-6 py-4 align-top">
+                        <div class="break-words">
+                            <p class="font-bold text-dark text-sm">{{ $item->nama_pengirim ?? 'Anonim' }}</p>
+                            <p class="text-[10px] text-gray-400 break-all">{{ $item->email_pengirim ?? '-' }}</p>
+                            <p class="text-[10px] text-gray-400 mt-1">{{ $item->created_at->translatedFormat('d F Y, H:i') }} WIB</p>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 align-top">
+                        <span class="px-2 py-1 text-[10px] font-bold rounded-md uppercase inline-block
+                            @if($item->kategori == 'Kritik') bg-red-100 text-red-600 
+                            @elseif($item->kategori == 'Saran') bg-blue-100 text-blue-600 
+                            @else bg-green-100 text-green-600 @endif">
+                            {{ $item->kategori }}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 align-top">
+                        <div class="w-full">
+                            <p class="text-sm text-gray-600 line-clamp-2 break-words whitespace-normal leading-relaxed">
+                                {{ $item->pesan }}
+                            </p>
+                            <button 
+                                onclick="showDetail(
+                                    '{{ $item->nama_pengirim ?? 'Anonim' }}', 
+                                    '{{ $item->kategori }}', 
+                                    @js($item->pesan), 
+                                    '{{ $item->created_at->translatedFormat('d F Y, H:i') }}'
+                                )" 
+                                class="text-[10px] font-bold text-primary hover:underline mt-2 uppercase tracking-wider block">
+                                Lihat Detail
                             </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="4" class="px-6 py-20 text-center text-gray-400 italic">
-                    Belum ada aspirasi yang masuk.
-                </td>
-            </tr>
-            @endforelse
-        </tbody>
-    </table>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-right align-top">
+                        <div class="flex justify-end">
+                            <form action="{{ route('admin.aspirasi.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aspirasi ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Hapus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="4" class="px-6 py-20 text-center text-gray-400 italic">
+                        Belum ada aspirasi yang masuk.
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {{-- Pagination --}}
@@ -120,7 +124,7 @@
                 <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                     <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Isi Pesan:</p>
                     <div class="max-h-64 overflow-y-auto pr-2 custom-scrollbar">
-                        <p id="detailPesan" class="text-gray-600 leading-relaxed whitespace-pre-line text-sm"></p>
+                        <p id="detailPesan" class="text-gray-600 leading-relaxed break-words whitespace-pre-line text-sm"></p>
                     </div>
                 </div>
             </div>

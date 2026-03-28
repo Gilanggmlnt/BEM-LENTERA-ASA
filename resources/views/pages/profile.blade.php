@@ -114,28 +114,28 @@ nav.is-sticky {
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
                             {{-- Card Total Fungsionaris --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <div class="bg-white rounded-lg shadow-lg shadow-primary/20 p-6 flex flex-col items-center justify-center text-center">
                         <div class="text-3xl font-bold mb-2">{{ $totalFungsionaris }}</div>
                         <p class="text-dark-light text-lg">Fungsionaris</p>
                     </div>
                             {{-- Card Total Staff Muda --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <div class="bg-white rounded-lg shadow-lg shadow-primary/20 p-6 flex flex-col items-center justify-center text-center">
                         <div class="text-3xl font-bold mb-2">{{ $totalStaffMuda }}</div>
                         <p class="text-dark-light text-lg">Staff Muda</p>
                 </div>
                             {{-- Card Total Program Kerja --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <div class="bg-white rounded-lg shadow-lg shadow-primary/20 p-6 flex flex-col items-center justify-center text-center">
                         <div class="text-3xl font-bold mb-2">{{ $totalProker }}</div>
                         <p class="text-dark-light text-lg">Program Kerja</p>
                     </div>
                             {{-- Card Total Agenda --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <div class="bg-white rounded-lg shadow-lg shadow-primary/20 p-6 flex flex-col items-center justify-center text-center">
                         <div class="text-3xl font-bold mb-2">{{ $totalAgenda }}</div>
                         <p class="text-dark-light text-lg">Agenda</p>
                     </div>
                             {{-- Card Total Kementerian --}}
-                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-center">
-                        <div class="text-3xl font-bold mb-2">{{ $totalKementerian }}</div>
+                    <div class="bg-white rounded-lg shadow-lg shadow-primary/20 p-6 flex flex-col items-center justify-center text-center">
+                        <div class="text-3xl font-bold mb-2">14</div>
                         <p class="text-dark-light text-lg">Kementerian</p>
                 </div>
             </div>
