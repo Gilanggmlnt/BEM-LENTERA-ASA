@@ -24,22 +24,23 @@
 
 {{-- Table --}}
 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-6">
-    <table class="w-full text-left border-collapse">
-        <thead>
-            <tr class="bg-gray-50 border-b border-gray-100">
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Nama</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Jabatan</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Kementerian</th>
-                <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right">Aksi</th>
-            </tr>
-        </thead>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Nama</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Jabatan</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Kementerian</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right">Aksi</th>
+                </tr>
+            </thead>
         <tbody class="divide-y divide-gray-50">
             @forelse($members as $member)
             <tr class="hover:bg-gray-50/50 transition-colors">
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-4">
                         @if($member->photo_path)
-                            <img src="{{ asset('images/' . $member->photo_path) }}" class="w-10 h-10 rounded-full object-cover border border-gray-100">
+                            <img src="{{ asset('images/foto_fungsionaris/' . $member->photo_path) }}" class="w-10 h-10 rounded-full object-cover border border-gray-100">
                         @else
                             <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>

@@ -19,29 +19,29 @@
     </div>
 </div>
 
-{{-- Table --}}
+{{-- Table Container with Horizontal Scroll --}}
 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-6">
     <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse table-fixed">
+        <table class="w-full text-left border-collapse min-w-[800px]">
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-100">
                     <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-1/4">Pengirim</th>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-40">Kategori</th>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-auto">Pesan Preview</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest w-32">Kategori</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Pesan Preview</th>
                     <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right w-24">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
                 @forelse($aspirasis as $item)
                 <tr class="hover:bg-gray-50/50 transition-colors">
-                    <td class="px-6 py-4 align-top">
-                        <div class="break-words">
-                            <p class="font-bold text-dark text-sm">{{ $item->nama_pengirim ?? 'Anonim' }}</p>
-                            <p class="text-[10px] text-gray-400 break-all">{{ $item->email_pengirim ?? '-' }}</p>
+                    <td class="px-6 py-4">
+                        <div class="max-w-[200px]">
+                            <p class="font-bold text-dark text-sm truncate" title="{{ $item->nama_pengirim ?? 'Anonim' }}">{{ $item->nama_pengirim ?? 'Anonim' }}</p>
+                            <p class="text-[10px] text-gray-400 truncate" title="{{ $item->email_pengirim ?? '-' }}">{{ $item->email_pengirim ?? '-' }}</p>
                             <p class="text-[10px] text-gray-400 mt-1">{{ $item->created_at->translatedFormat('d F Y, H:i') }} WIB</p>
                         </div>
                     </td>
-                    <td class="px-6 py-4 align-top">
+                    <td class="px-6 py-4">
                         <span class="px-2 py-1 text-[10px] font-bold rounded-md uppercase inline-block
                             @if($item->kategori == 'Kritik') bg-red-100 text-red-600 
                             @elseif($item->kategori == 'Saran') bg-blue-100 text-blue-600 
@@ -49,9 +49,9 @@
                             {{ $item->kategori }}
                         </span>
                     </td>
-                    <td class="px-6 py-4 align-top">
-                        <div class="w-full">
-                            <p class="text-sm text-gray-600 line-clamp-2 break-words whitespace-normal leading-relaxed">
+                    <td class="px-6 py-4">
+                        <div class="max-w-md">
+                            <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed">
                                 {{ $item->pesan }}
                             </p>
                             <button 
@@ -61,12 +61,12 @@
                                     @js($item->pesan), 
                                     '{{ $item->created_at->translatedFormat('d F Y, H:i') }}'
                                 )" 
-                                class="text-[10px] font-bold text-primary hover:underline mt-2 uppercase tracking-wider block">
+                                class="text-[10px] font-bold text-primary hover:underline mt-1 uppercase tracking-wider block">
                                 Lihat Detail
                             </button>
                         </div>
                     </td>
-                    <td class="px-6 py-4 text-right align-top">
+                    <td class="px-6 py-4 text-right">
                         <div class="flex justify-end">
                             <form action="{{ route('admin.aspirasi.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aspirasi ini?')">
                                 @csrf

@@ -40,16 +40,40 @@
             width: 1.25rem;
             height: 1.25rem;
         }
+
+        /* Mobile Sidebar Transitions */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        @media (max-width: 767px) {
+            #sidebar.hidden-mobile {
+                transform: translateX(-100%);
+            }
+            #sidebar.show-mobile {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 flex min-h-screen">
+<body class="bg-gray-50 flex min-h-screen relative overflow-x-hidden">
+    
+    {{-- Mobile Overlay --}}
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-[40] hidden md:hidden transition-opacity duration-300 opacity-0"></div>
+
     {{-- Sidebar --}}
-    <aside class="w-64 bg-dark text-white p-6 hidden md:block flex-shrink-0">
-        <div class="mb-10 flex items-center gap-3">
-            <img src="{{ asset('images/logolensa.png') }}" alt="Logo" class="w-8">
-            <span class="font-bold text-lg text-primary">BEM ADMIN</span>
+    <aside id="sidebar" class="fixed md:sticky top-0 left-0 h-screen w-64 bg-dark text-white p-6 z-[50] flex-shrink-0 hidden-mobile md:translate-x-0">
+        <div class="mb-10 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="{{ asset('images/logolensa.png') }}" alt="Logo" class="w-8">
+                <span class="font-bold text-lg text-primary">BEM ADMIN</span>
+            </div>
+            {{-- Close Button Mobile --}}
+            <button id="close-sidebar" class="md:hidden p-2 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
         </div>
-        <nav class="space-y-1">
+        
+        <nav class="space-y-1 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pr-2">
             <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 px-4">Menu Utama</p>
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-primary text-dark font-bold' : 'text-gray-400 hover:text-white hover:bg-white/5' }} transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
@@ -76,7 +100,7 @@
                 Suara Mahasiswa
             </a>
 
-            <div class="pt-10">
+            <div class="pt-10 pb-10">
                 <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 px-4">Lainnya</p>
                 <a href="{{ url('/') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
@@ -94,14 +118,72 @@
     </aside>
 
     {{-- Main Content --}}
-    <main class="flex-1 p-8 overflow-y-auto">
-        @if(session('success'))
-            <div class="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded-r-xl shadow-sm">
-                {{ session('success') }}
+    <div class="flex-1 flex flex-col min-w-0">
+        {{-- Mobile Header --}}
+        <header class="md:hidden bg-white border-b border-gray-100 p-4 flex items-center justify-between sticky top-0 z-[30]">
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('images/logolensa.png') }}" alt="Logo" class="w-6">
+                <span class="font-bold text-sm text-dark">BEM ADMIN</span>
             </div>
-        @endif
+            <button id="open-sidebar" class="p-2 text-dark bg-gray-50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </header>
 
-        @yield('content')
-    </main>
+        <main class="p-4 md:p-8 overflow-y-auto">
+            @if(session('success'))
+                <div class="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded-r-xl shadow-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @yield('content')
+        </main>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const openBtn = document.getElementById('open-sidebar');
+        const closeBtn = document.getElementById('close-sidebar');
+
+        function toggleSidebar() {
+            const isOpen = sidebar.classList.contains('show-mobile');
+            
+            if (isOpen) {
+                // Close
+                sidebar.classList.remove('show-mobile');
+                sidebar.classList.add('hidden-mobile');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.add('opacity-0');
+                document.body.style.overflow = '';
+            } else {
+                // Open
+                sidebar.classList.add('show-mobile');
+                sidebar.classList.remove('hidden-mobile');
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.add('opacity-100');
+                    overlay.classList.remove('opacity-0');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        openBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('show-mobile', 'hidden-mobile');
+                overlay.classList.add('hidden');
+                overlay.classList.remove('opacity-100');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>
