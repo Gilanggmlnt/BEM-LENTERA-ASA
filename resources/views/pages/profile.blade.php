@@ -196,7 +196,7 @@ nav.is-sticky {
     </section>
 
     {{-- STRUKTUR KABINET --}}
-    <section class="py-24 overflow-x-auto bg-slate-50" id="struktur-kabinet">
+    <section class="py-24 bg-slate-50" id="struktur-kabinet">
         <div class="max-w-7xl mx-auto">
             <div id="struktur-kabinet-title" class="flex items-center gap-3 p-4 mb-2">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -204,11 +204,17 @@ nav.is-sticky {
                 </h2>
                 <span class=" text-4xl">↗</span>
             </div>
-            <div class="mt-2 w-fit mx-auto inline-flex items-center gap-2 bg-gray/10 px-4 py-2 rounded-full text-xs md:text-sm font-medium border border-primary/20">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            <span>Klik pada kementerian untuk melihat detail anggota dan program kerja</span>
-        </div>
-        <div class="min-w-[2400px] flex flex-col items-center font-sans pb-40">
+            <div class="mt-2 w-fit mx-auto inline-flex items-center gap-2 bg-gray/10 px-4 py-2 rounded-full text-base md:text-lg font-medium border border-primary/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4"/>
+                    <path d="M12 8h.01"/>
+                </svg>
+                <span>Klik pada kementerian untuk melihat detail anggota dan program kerja</span>
+            </div>
+        <!-- AREA KHUSUS ORGANIGRAM -->
+        <div class="overflow-x-auto mt-12">
+            <div class="min-w-[2400px] flex flex-col items-center font-sans pb-40">
 
             <style>
             .line-v { background-color: #000; width: 2px; position: absolute; }
@@ -376,7 +382,7 @@ nav.is-sticky {
                 <div class="line-v h-6 relative z-line"></div>
 
                 <div class="flex gap-2 justify-center relative w-full">
-                    <div class="line-h top-0 left-[12.2%] right-[12.2%] z-line"></div>
+                    <div class="line-h top-0 left-[12.1%] right-[12.2%] z-line"></div>
 
                     <div class="flex-1 flex flex-col items-center relative">
                     <div class="line-v h-4 top-0 z-line"></div>

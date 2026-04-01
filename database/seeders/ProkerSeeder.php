@@ -50,7 +50,7 @@ class ProkerSeeder extends Seeder
             [
                 'kementerian' => 'Sosial Masyarakat',
                 'nama_proker' => 'Polines Mengajar',
-                'nama_ketuplak' => 'Dea Aulia Sahra',
+                'nama_ketuplak' => 'Dea Aulia Zahra',
                 'deskripsi_proker' => 'Polines Mengajar adalah salah satu program kerja dari BEM Sosial Masyarakat Politeknik Negeri Semarang yang bekerjasama dengan OKM Polines Mengabdi. Kegiatan ini berfokus pada pengajaran kreatif dan edukatif kepada siswa SD, Komunitas, serta Panti Asuhan. Program kerja ini bergerak dalam bidang pendidikan yang bertujuan untuk menginspirasi peserta didik agar tetap semangat dalam belajar, mengenali diri dan lingkungannya, serta menumbuhkan rasa percaya diri.',
                 'pamflet' => '/images/flyer_proker/polines_mengajar.png',
                 'tanggal_pelaksanaan' => '2025-12-10',

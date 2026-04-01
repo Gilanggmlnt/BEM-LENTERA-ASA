@@ -543,7 +543,7 @@ nav.is-sticky {
                     {{-- Front Face --}}
                     <div class="flip-card-front bg-white border border-gray-100 p-8 flex flex-col items-center justify-center shadow-sm">
                         <div class="w-16 h-16 mb-6 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center ring-4 ring-primary/10">
-                            <img src="{{ asset('images/logolensa.png') }}" alt="Logo" class="w-10 h-10 object-contain">
+                            <img src="{{ asset('images/whatsapp-seeklogo.png') }}" alt="Logo" class="w-10 h-10 object-contain">
                         </div>
                         <h3 class="font-bold text-xl text-dark mb-3">{{ $channel['title'] }}</h3>
                         <p class="text-xs text-gray-500 leading-relaxed mb-6">
