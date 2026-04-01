@@ -278,7 +278,7 @@ nav.is-sticky {
                     
 
                     <div class="absolute top-[60px] w-[500px] flex justify-center gap-4">
-                    <div class="line-h top-0 left-[15.9%] right-[15.9%] z-line"></div>
+                    <div class="line-h top-0 left-[15.8%] right-[15.9%] z-line"></div>
 
                     <div class="flex-1 flex flex-col items-center relative">
                         <div class="line-v h-4 top-0 z-line"></div>

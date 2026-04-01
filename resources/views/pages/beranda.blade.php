@@ -135,12 +135,12 @@ nav.is-sticky {
 
             {{-- Button --}}
             <div class="hero-item">
-                <a href="/"
+                <a href="/profile"
                    class="inline-flex items-center gap-2
                           px-6 py-3 rounded-lg
                           bg-gradient-to-r from-primary to-secondary
                           font-normal shadow-md hover:scale-105 transition">
-                    Selengkapnya →
+                    Tentang BEM Polines →
                 </a>
             </div>
 
@@ -517,22 +517,22 @@ nav.is-sticky {
             @php
                 $channels = [
                     [
-                        'title' => 'BEM Polines',
+                        'title' => 'BEM POLINES',
                         'description' => 'Akun Resmi BEM KBM Polines untuk Informasi Terbaru Seputar Kegiatan dan Program Kerja.',
                         'link' => 'https://whatsapp.com/channel/0029VayYLfKEAKWJTrZ6vn0q',
                         'qr' => 'Channel BEM POLINES.png'
                     ],
                     [
-                        'title' => 'Info Beasiswa & Lomba',
+                        'title' => 'INFO BEASISWA & LOMBA',
                         'description' => 'Informasi Beasiswa dan Lomba Terbaru untuk Mahasiswa Politeknik Negeri Semarang.',
                         'link' => 'https://whatsapp.com/channel/0029Vajovk95Ui2bXYB9ET16',
                         'qr' => 'CHANNEL INFO BEASISWA & LOMBA.png'
                     ],
                     [
-                        'title' => 'Polines Career Center',
-                        'description' => 'Pusat Informasi Karir dan Lowongan Kerja untuk Alumni dan Mahasiswa Polines.',
-                        'link' => 'https://whatsapp.com/channel/0029VaYuQKCJZg49k6upNj3I',
-                        'qr' => 'CHANNEL POLINES CAREER CENTER.png'
+                        'title' => 'KEMENDAGRI',
+                        'description' => 'Kanal Informasi terkait Birokrasi Kampus Politeknik Negeri Semarang.',
+                        'link' => 'https://whatsapp.com/channel/0029VbB8SPvFcow3KJz3kW2C',
+                        'qr' => 'CHANNEL KEMENDAGRI.png'
                     ]
                 ];
             @endphp

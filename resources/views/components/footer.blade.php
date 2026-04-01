@@ -50,7 +50,7 @@
                     <li><a href="{{ route('profile') }}#aspirasi" class="hover:text-primary transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>Kritik dan Saran</a></li>
                     <li><a href="https://whatsapp.com/channel/0029VayYLfKEAKWJTrZ6vn0q" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>BEM POLINES</a></li>
                     <li><a href="https://whatsapp.com/channel/0029Vajovk95Ui2bXYB9ET16" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>INFO LOMBA & BEASISWA</a></li>
-                    <li><a href="https://whatsapp.com/channel/0029VaYuQKCJZg49k6upNj3I" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>POLINES CAREER CENTER</a></li>
+                    <li><a href="https://whatsapp.com/channel/0029VbB8SPvFcow3KJz3kW2C" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>KEMENDAGRI</a></li>
                 </ul>
             </div>
 
